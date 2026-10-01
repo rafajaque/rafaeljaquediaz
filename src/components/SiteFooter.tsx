@@ -6,10 +6,10 @@ export function SiteFooter() {
   return (
     <footer className="night relative overflow-hidden text-foam">
       <div className="mx-auto max-w-7xl px-6 pt-24 pb-10">
-        <p className="label text-celeste">Have a blue idea?</p>
+        <p className="label text-celeste">Conversemos sobre tecnología y nuevas oportunidades</p>
         <Link to="/contact" className="group mt-4 block">
           <span className="display block text-[clamp(3.5rem,11vw,10rem)] transition-colors group-hover:text-celeste">
-            Let&rsquo;s talk <em className="text-celeste group-hover:text-foam">↗</em>
+            Hablemos <em className="text-celeste group-hover:text-foam">↗</em>
           </span>
         </Link>
 
@@ -24,7 +24,7 @@ export function SiteFooter() {
               </li>
             ))}
           </ul>
-          <div className="label flex gap-6 text-foam/50">
+          <div className="label flex flex-wrap gap-6 text-foam/50">
             <span>{site.location}</span>
             <span>© {new Date().getFullYear()} {site.name}</span>
           </div>

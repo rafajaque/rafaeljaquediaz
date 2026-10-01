@@ -1,29 +1,19 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { allProjects } from 'content-collections'
 import { PageIntro } from '@/components/PageIntro'
-import { ProjectRow } from '@/components/ProjectRow'
-import { site } from '@/data/site'
+import { experience, site } from '@/data/site'
 
 export const Route = createFileRoute('/projects')({
-  head: () => ({ meta: [{ title: `Work — ${site.name}` }] }),
-  component: Projects,
+  head: () => ({ meta: [{ title: `Experiencia — ${site.name}` }] }),
+  component: Experience,
 })
-
-function Projects() {
-  const projects = [...allProjects].sort((a, b) => a.order - b.order)
-
-  return (
-    <>
-      <PageIntro n="01" eyebrow="Selected work, 2024 — 2026" title={<>The <em className="text-azul">work</em></>}>
-        Books, rooms, brands and one app. Different formats, same obsession: how much feeling a single colour
-        can hold.
-      </PageIntro>
-
-      <section className="mx-auto max-w-7xl space-y-36 px-6 pt-20 pb-32">
-        {projects.map((p, i) => (
-          <ProjectRow key={p._meta.path} project={p} index={i} />
-        ))}
-      </section>
-    </>
-  )
+function Experience() {
+  return <>
+    <PageIntro n="01" eyebrow="Trayectoria · 2017–2026" title={<>Mi <em className="text-azul">experiencia</em></>}>Mi recorrido profesional abarca tecnología industrial, análisis de datos y procesos, soporte informático, seguridad electrónica y atención académica.</PageIntro>
+    <section className="mx-auto max-w-7xl px-6 py-20" aria-label="Experiencia profesional">
+      <ol>{experience.map((item, index) => <li key={item.company} className="grid gap-5 border-t border-ink/20 py-10 md:grid-cols-[160px_1fr]">
+        <div><span className="label text-azul">{String(index + 1).padStart(2, '0')}</span><p className="mt-4 text-lg text-ink/65">{item.period}</p></div>
+        <div><p className="label text-azul">{item.company}</p><h2 className="mt-4 font-display text-4xl md:text-5xl">{item.role}</h2></div>
+      </li>)}</ol>
+    </section>
+  </>
 }

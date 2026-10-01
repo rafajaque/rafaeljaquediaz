@@ -29,6 +29,13 @@ export function Picture({ src, alt, width, height, sizes, ratio, priority, class
       loading={priority ? 'eager' : 'lazy'}
       fetchPriority={priority ? 'high' : 'auto'}
       decoding="async"
+      onError={(event) => {
+        const image = event.currentTarget
+        if (image.dataset.fallback) return
+        image.dataset.fallback = 'true'
+        image.removeAttribute('srcset')
+        image.src = src
+      }}
       className={cn('block h-auto w-full', className)}
     />
   )

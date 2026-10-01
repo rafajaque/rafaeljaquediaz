@@ -1,34 +1,32 @@
-# Luz Marín — Portfolio
+# Rafael Andrés Jaque Díaz
 
-A personal portfolio for a photographer and visual designer, built around one idea: **everything is blue**. The design borrows from the cyanotype print process — celeste paper, ultramarine and Prussian-blue ink, film grain, darkroom-style captions and an "exposure test strip" as a recurring motif.
+Portafolio profesional en español de Rafael Jaque, Ingeniero Informático y Gestor de Proyectos Tecnológicos. El contenido está basado en su CV.
 
-## Pages
+## Páginas
 
-- **Home** (`/`) — hero with editorial type, featured projects, a scrollable contact-sheet teaser and a short manifesto.
-- **Work** (`/projects`) — project showcase with large imagery, role, client, year and tags.
-- **Gallery** (`/gallery`) — masonry photo gallery filterable by series, with a full-screen lightbox (keyboard ← → Esc).
-- **About** (`/about`) — portrait, bio, four-step process, timeline and clients.
-- **Contact** (`/contact`) — Netlify Forms contact form with project type and budget, copy-to-clipboard email, and social links.
+- Inicio: presentación, áreas de enfoque, habilidades, experiencia reciente e insignia de Google.
+- Experiencia (/projects): cargos y empresas de 2017 a 2026.
+- Certificaciones (/gallery): cursos del CV e insignia Google Data-Driven Decision Making.
+- Sobre mí (/about): perfil, formación académica, habilidades e idiomas.
+- Contacto (/contact): correo, teléfono, perfiles profesionales y formulario de Netlify.
 
-## Tech
+Se conservan las rutas originales para mantener los enlaces existentes. No se atribuyen proyectos, fotografías, logros cuantitativos ni instituciones educativas que no figuren en el CV.
 
-- [TanStack Start](https://tanstack.com/start) + React 19, file-based routing
-- Tailwind CSS 4 with a custom blue palette (`src/styles.css`)
-- Content Collections for projects (`content/projects/*.md`)
-- **Netlify Image CDN** — every image is served resized as WebP with responsive `srcset`
-- **Netlify Forms** — contact submissions appear in the Netlify dashboard
+## Desarrollo
 
-## Run locally
+TanStack Start, React 19, TypeScript, Tailwind CSS 4 y Netlify.
 
-```bash
-pnpm install
-netlify dev        # or: pnpm dev
-```
+    pnpm install --frozen-lockfile
+    pnpm dev
+    pnpm build
 
-Netlify Forms and the Image CDN are best tested with `netlify dev` or on a deploy preview.
+El formulario requiere Netlify Forms habilitado en el despliegue. Los enlaces de correo y teléfono funcionan de forma independiente. La insignia utiliza Picture y Netlify Image CDN en producción, con el archivo local como respaldo si el CDN no está disponible.
 
-## Editing content
+## Editar el contenido
 
-- Name, email, socials and gallery photos: `src/data/site.ts`
-- Projects: add a markdown file to `content/projects/`
-- Images: drop them into `public/img/` and reference them as `/img/<file>`
+- Perfil, experiencia, habilidades, formación y certificaciones: src/data/site.ts.
+- Insignia original: public/img/google-data-driven-decision-making.png.
+- Presentación y secciones: src/routes/.
+- Formulario estático de registro para Netlify: public/contact.html. Sus campos deben coincidir con los del formulario React.
+
+Las certificaciones conservan los títulos del CV; la insignia adjunta se presenta por separado, sin inventar fecha ni enlace de validación.
