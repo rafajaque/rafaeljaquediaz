@@ -88,7 +88,7 @@ function Contact() {
           >
             <span>
               <span className="label block text-ink/50">Email</span>
-              <span className="break-all font-display text-2xl italic">{site.email}</span>
+              <span className="break-all font-display text-2xl font-medium">{site.email}</span>
             </span>
             <span className="grid size-10 shrink-0 place-items-center rounded-full bg-ink text-foam transition-colors group-hover:bg-azul">
               {copied ? <Check size={16} /> : <Copy size={16} />}
