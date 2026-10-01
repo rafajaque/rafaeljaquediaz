@@ -5,12 +5,11 @@ import { site, socials } from '@/data/site'
 import { cn } from '@/lib/utils'
 
 export const Route = createFileRoute('/contact')({
-  head: () => ({ meta: [{ title: `Contact — ${site.name}` }] }),
+  head: () => ({ meta: [{ title: `Contacto — ${site.name}` }] }),
   component: Contact,
 })
 
-const projectTypes = ['Commission', 'Photobook', 'Identity', 'Exhibition', 'Just saying hi']
-const budgets = ['< $3k', '$3k – 10k', '$10k +', 'Not sure yet']
+const projectTypes = ['Oportunidad laboral', 'Proyecto tecnológico', 'Análisis de datos', 'Soporte TI', 'Otro']
 
 const field =
   'w-full border-0 border-b border-ink/25 bg-transparent px-0 py-3 text-lg outline-none transition-colors placeholder:text-ink/35 focus:border-azul focus:ring-0'
@@ -38,10 +37,14 @@ function Contact() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [copied, setCopied] = useState(false)
   const [type, setType] = useState(projectTypes[0])
-  const [budget, setBudget] = useState(budgets[3])
 
   const copyEmail = async () => {
-    await navigator.clipboard?.writeText(site.email)
+    try {
+      await navigator.clipboard.writeText(site.email)
+    } catch {
+      setCopied(false)
+      return
+    }
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -69,14 +72,13 @@ function Contact() {
         <div className="lg:col-span-5">
           <p className="label flex animate-rise gap-4 text-azul">
             <span>04</span>
-            <span>Contact</span>
+            <span>Contacto</span>
           </p>
-          <h1 className="display mt-6 animate-rise text-[clamp(4rem,10vw,8.5rem)] [animation-delay:100ms]">
-            Write <em className="text-azul">to me</em>.
+          <h1 className="display mt-6 animate-rise text-[clamp(3rem,8vw,6rem)] [animation-delay:100ms]">
+            Escrí<em className="text-azul">beme</em>.
           </h1>
           <p className="mt-8 max-w-md text-lg leading-relaxed text-ink/75">
-            Commissions, books, shows or a blue you can&rsquo;t stop thinking about. I answer every message within
-            two working days.
+            Para conversar sobre oportunidades laborales, proyectos tecnológicos, análisis de datos o soporte TI.
           </p>
 
           <button
@@ -86,17 +88,17 @@ function Contact() {
           >
             <span>
               <span className="label block text-ink/50">Email</span>
-              <span className="font-display text-3xl italic">{site.email}</span>
+              <span className="break-all font-display text-2xl italic">{site.email}</span>
             </span>
             <span className="grid size-10 shrink-0 place-items-center rounded-full bg-ink text-foam transition-colors group-hover:bg-azul">
               {copied ? <Check size={16} /> : <Copy size={16} />}
             </span>
           </button>
           <p className="label mt-2 h-4 text-azul" aria-live="polite">
-            {copied ? 'Copied to clipboard' : ''}
+            {copied ? 'Correo copiado' : ''}
           </p>
 
-          <ul className="mt-8">
+          <div className="mt-6 space-y-3"><a href={`mailto:${site.email}`} className="block text-azul underline">Enviar correo directamente</a><a href={site.phoneHref} className="block text-lg">{site.phone}</a></div><ul className="mt-8">
             {socials.map((s) => (
               <li key={s.label}>
                 <a
@@ -125,13 +127,13 @@ function Contact() {
                   <Check size={24} />
                 </span>
                 <h2 className="display mt-8 text-6xl">
-                  Message <em className="text-azul">received</em>.
+                  Mensaje <em className="text-azul">recibido</em>.
                 </h2>
                 <p className="mt-4 max-w-sm text-lg text-ink/70">
-                  Thank you. It&rsquo;s drying on the line — I&rsquo;ll get back to you very soon.
+                  Gracias por escribirme. Me pondré en contacto contigo.
                 </p>
                 <button type="button" onClick={() => setStatus('idle')} className="label link-underline mt-10 text-azul">
-                  Send another →
+                  Enviar otro →
                 </button>
               </div>
             ) : (
@@ -139,34 +141,29 @@ function Contact() {
                 <input type="hidden" name="form-name" value="contact" />
                 <p hidden>
                   <label>
-                    Don&rsquo;t fill this out: <input name="bot-field" />
+                    Deja este campo vacío: <input name="bot-field" />
                   </label>
                 </p>
 
                 <div>
-                  <p className="label mb-4 text-ink/60">What are we making?</p>
+                  <p className="label mb-4 text-ink/60">Motivo de contacto</p>
                   <Chips name="project-type" options={projectTypes} value={type} onChange={setType} />
                 </div>
 
                 <div className="grid gap-8 sm:grid-cols-2">
                   <label className="block">
-                    <span className="label text-ink/60">Your name</span>
+                    <span className="label text-ink/60">Tu nombre</span>
                     <input type="text" name="name" required autoComplete="name" placeholder="Ana Pérez" className={field} />
                   </label>
                   <label className="block">
                     <span className="label text-ink/60">Email</span>
-                    <input type="email" name="email" required autoComplete="email" placeholder="ana@estudio.com" className={field} />
+                    <input type="email" name="email" required autoComplete="email" placeholder="ana@empresa.com" className={field} />
                   </label>
                 </div>
 
-                <div>
-                  <p className="label mb-4 text-ink/60">Budget</p>
-                  <Chips name="budget" options={budgets} value={budget} onChange={setBudget} />
-                </div>
-
-                <label className="block">
-                  <span className="label text-ink/60">Tell me about it</span>
-                  <textarea name="message" required rows={5} placeholder="A book of the harbour at night…" className={cn(field, 'resize-none')} />
+<label className="block">
+                  <span className="label text-ink/60">Tu mensaje</span>
+                  <textarea name="message" required rows={5} placeholder="Cuéntame sobre la oportunidad o el proyecto…" className={cn(field, 'resize-none')} />
                 </label>
 
                 <div className="flex flex-wrap items-center gap-4">
@@ -176,11 +173,11 @@ function Contact() {
                     className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-4 font-medium text-foam transition-colors hover:bg-azul disabled:opacity-60"
                   >
                     <Send size={16} />
-                    {status === 'sending' ? 'Sending…' : 'Send message'}
+                    {status === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
                   </button>
                   {status === 'error' && (
                     <p className="text-sm text-azul-deep" role="alert">
-                      Something went wrong. Please try again or email me directly.
+                      No se pudo enviar. Inténtalo de nuevo o escríbeme directamente por correo.
                     </p>
                   )}
                 </div>

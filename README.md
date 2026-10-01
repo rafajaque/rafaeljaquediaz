@@ -1,34 +1,49 @@
-# Luz Marín — Portfolio
+# Rafael Andrés Jaque Díaz — Portafolio
 
-A personal portfolio for a photographer and visual designer, built around one idea: **everything is blue**. The design borrows from the cyanotype print process — celeste paper, ultramarine and Prussian-blue ink, film grain, darkroom-style captions and an "exposure test strip" as a recurring motif.
+Portafolio profesional de Rafael Jaque, Ingeniero Informático y Gestor de Proyectos Tecnológicos. El sitio presenta su experiencia en análisis de datos y procesos, soporte TI, seguridad electrónica e integración de sistemas. Todo el contenido está basado en su CV.
 
-## Pages
+El diseño conserva la identidad visual azul del proyecto original, ahora aplicada a una presentación profesional centrada en tecnología, datos y gestión. La insignia oficial **Google Data-Driven Decision Making** mantiene sus colores originales.
 
-- **Home** (`/`) — hero with editorial type, featured projects, a scrollable contact-sheet teaser and a short manifesto.
-- **Work** (`/projects`) — project showcase with large imagery, role, client, year and tags.
-- **Gallery** (`/gallery`) — masonry photo gallery filterable by series, with a full-screen lightbox (keyboard ← → Esc).
-- **About** (`/about`) — portrait, bio, four-step process, timeline and clients.
-- **Contact** (`/contact`) — Netlify Forms contact form with project type and budget, copy-to-clipboard email, and social links.
+## Páginas
 
-## Tech
+- **Inicio** (`/`) — presentación profesional, áreas de enfoque, habilidades técnicas, experiencia reciente e insignia de Google.
+- **Experiencia** (`/projects`) — trayectoria laboral entre 2017 y 2026, con cargos, empresas y periodos.
+- **Certificaciones** (`/gallery`) — formación continua en datos, gestión de proyectos, Power BI, Excel, marketing y experiencia del cliente.
+- **Sobre mí** (`/about`) — perfil profesional, formación académica, habilidades técnicas e inglés avanzado.
+- **Contacto** (`/contact`) — correo, teléfono, GitHub, LinkedIn y formulario de contacto mediante Netlify Forms.
 
-- [TanStack Start](https://tanstack.com/start) + React 19, file-based routing
-- Tailwind CSS 4 with a custom blue palette (`src/styles.css`)
-- Content Collections for projects (`content/projects/*.md`)
-- **Netlify Image CDN** — every image is served resized as WebP with responsive `srcset`
-- **Netlify Forms** — contact submissions appear in the Netlify dashboard
+Las rutas `/projects` y `/gallery` se conservan para mantener compatibles los enlaces existentes, aunque ahora representan experiencia y certificaciones.
 
-## Run locally
+## Tecnologías
+
+- [TanStack Start](https://tanstack.com/start) y React 19 con rutas basadas en archivos.
+- TypeScript y Tailwind CSS 4 con una paleta azul personalizada en `src/styles.css`.
+- [Lucide](https://lucide.dev/) para iconos.
+- **Netlify Image CDN** para entregar la insignia en WebP y tamaños adaptables, con el archivo local como respaldo.
+- **Netlify Forms** para recibir los mensajes enviados desde el formulario de contacto.
+
+## Ejecutar localmente
 
 ```bash
-pnpm install
-netlify dev        # or: pnpm dev
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
-Netlify Forms and the Image CDN are best tested with `netlify dev` or on a deploy preview.
+Para comprobar la versión de producción:
 
-## Editing content
+```bash
+pnpm build
+```
 
-- Name, email, socials and gallery photos: `src/data/site.ts`
-- Projects: add a markdown file to `content/projects/`
-- Images: drop them into `public/img/` and reference them as `/img/<file>`
+El formulario y Netlify Image CDN funcionan de forma completa con `netlify dev` o en una vista previa de despliegue. Los enlaces directos de correo y teléfono funcionan de manera independiente.
+
+## Editar el contenido
+
+- Identidad, datos de contacto, experiencia, habilidades, formación y certificaciones: `src/data/site.ts`.
+- Insignia de Google: `public/img/google-data-driven-decision-making.png`.
+- Contenido y estructura de las páginas: `src/routes/`.
+- Navegación y pie de página: `src/components/SiteHeader.tsx` y `src/components/SiteFooter.tsx`.
+- Formulario estático que Netlify utiliza para registrar los campos: `public/contact.html`.
+
+Los campos de `public/contact.html` deben coincidir con los del formulario React en `src/routes/contact.tsx`. Las certificaciones reproducen los títulos incluidos en el CV; la insignia se presenta por separado sin atribuirle una fecha ni un enlace de validación no proporcionados.
+

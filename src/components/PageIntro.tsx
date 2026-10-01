@@ -8,7 +8,7 @@ export function PageIntro({ n, eyebrow, title, children }: { n: string; eyebrow:
           <span>{n}</span>
           <span>{eyebrow}</span>
         </p>
-        <h1 className="display mt-6 animate-rise text-[clamp(4rem,12vw,11rem)] [animation-delay:100ms]">{title}</h1>
+        <h1 className="display mt-6 animate-rise text-[clamp(2.3rem,6.5vw,6.5rem)] [animation-delay:100ms]">{title}</h1>
         {children && (
           <div className="mt-8 max-w-xl animate-rise text-lg leading-relaxed text-ink/75 [animation-delay:200ms]">{children}</div>
         )}

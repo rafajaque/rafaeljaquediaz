@@ -39,7 +39,7 @@ export const Route = createRootRoute({
       },
       {
         property: 'og:image',
-        content: '/.netlify/images?url=/img/g-rio.png&w=1200&h=630&fit=cover&fm=jpg',
+        content: '/img/google-data-driven-decision-making.png',
       },
       {
         property: 'og:type',
@@ -51,6 +51,7 @@ export const Route = createRootRoute({
       },
     ],
     links: [
+      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
       {
@@ -64,7 +65,7 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <HeadContent />
       </head>
