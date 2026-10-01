@@ -8,7 +8,7 @@ El diseño conserva la identidad visual azul del proyecto original, ahora aplica
 
 - **Inicio** (`/`) — presentación profesional, áreas de enfoque, habilidades técnicas, experiencia reciente e insignia de Google.
 - **Experiencia** (`/projects`) — trayectoria laboral entre 2017 y 2026, con cargos, empresas y periodos.
-- **Certificaciones** (`/gallery`) — 34 certificaciones y 230,5 horas de formación en datos, ciberseguridad, gestión de proyectos, herramientas digitales, comunicación y liderazgo.
+- **Certificaciones** (`/gallery`) — 34 certificaciones y 229,5 horas de formación, con fecha, PDF y enlace público de Coursera cuando está disponible.
 - **Sobre mí** (`/about`) — perfil profesional, formación académica, habilidades técnicas e inglés avanzado.
 - **Contacto** (`/contact`) — correo, teléfono, GitHub, LinkedIn y formulario de contacto mediante Netlify Forms.
 
@@ -41,9 +41,10 @@ El formulario y Netlify Image CDN funcionan de forma completa con `netlify dev` 
 
 - Identidad, datos de contacto, experiencia, habilidades, formación y certificaciones: `src/data/site.ts`.
 - Insignia de Google: `public/img/google-data-driven-decision-making.png`.
+- PDFs de respaldo: `public/certificados/`.
 - Contenido y estructura de las páginas: `src/routes/`.
 - Navegación y pie de página: `src/components/SiteHeader.tsx` y `src/components/SiteFooter.tsx`.
 - Formulario estático que Netlify utiliza para registrar los campos: `public/contact.html`.
 
-Los campos de `public/contact.html` deben coincidir con los del formulario React en `src/routes/contact.tsx`. Las certificaciones reproducen los nombres, instituciones y horas del archivo `Certificados.xlsx`; la insignia se presenta por separado sin atribuirle una fecha ni un enlace de validación no proporcionados.
+Los campos de `public/contact.html` deben coincidir con los del formulario React en `src/routes/contact.tsx`. Las certificaciones reproducen los nombres, instituciones y horas del archivo `Certificados.xlsx`. Los certificados de Coursera enlazan a su verificación pública; los demás muestran el PDF y su número de serie, sin atribuirles una verificación externa no disponible.
 
