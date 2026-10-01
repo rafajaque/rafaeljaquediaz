@@ -71,7 +71,6 @@ function Contact() {
         {/* Left: direct lines */}
         <div className="lg:col-span-5">
           <p className="label flex animate-rise gap-4 text-azul">
-            <span>05</span>
             <span>Contacto</span>
           </p>
           <h1 className="display mt-6 animate-rise text-[clamp(3rem,8vw,6rem)] [animation-delay:100ms]">

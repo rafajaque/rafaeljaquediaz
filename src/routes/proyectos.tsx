@@ -10,7 +10,7 @@ export const Route = createFileRoute('/proyectos')({
 
 function Projects() {
   return <>
-    <PageIntro n="02" eyebrow="Código y desarrollo" title={<>Mis <em className="text-azul">proyectos</em></>}>
+    <PageIntro eyebrow="Código y desarrollo" title={<>Mis <em className="text-azul">proyectos</em></>}>
       Repositorios públicos donde comparto proyectos de desarrollo, experimentación y mi trabajo profesional.
     </PageIntro>
 
@@ -31,10 +31,10 @@ function Projects() {
       </div>
 
       <ol className="grid gap-6 md:grid-cols-2">
-        {githubProjects.map((project, index) => (
+        {githubProjects.map((project) => (
           <li key={project.href} className="group flex min-h-80 flex-col rounded-2xl border border-ink/15 bg-foam p-7 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-azul/50 hover:shadow-[0_24px_60px_-36px_rgba(8,26,63,0.6)] md:p-9">
             <div className="flex items-start justify-between gap-5">
-              <span className="label text-azul">{String(index + 1).padStart(2, '0')} · {project.language}</span>
+              <span className="label text-azul">{project.language}</span>
               <Github size={24} className="text-ink/35 transition-colors group-hover:text-azul" aria-hidden="true" />
             </div>
             <h3 className="mt-10 break-words font-display text-4xl md:text-5xl">{project.name}</h3>

@@ -5,11 +5,11 @@ import { site } from '@/data/site'
 import { cn } from '@/lib/utils'
 
 export const navItems = [
-  { to: '/projects', label: 'Experiencia', n: '01' },
-  { to: '/proyectos', label: 'Proyectos', n: '02' },
-  { to: '/gallery', label: 'Certificaciones', n: '03' },
-  { to: '/about', label: 'Sobre mí', n: '04' },
-  { to: '/contact', label: 'Contacto', n: '05' },
+  { to: '/projects', label: 'Experiencia' },
+  { to: '/proyectos', label: 'Proyectos' },
+  { to: '/gallery', label: 'Certificaciones' },
+  { to: '/about', label: 'Sobre mí' },
+  { to: '/contact', label: 'Contacto' },
 ] as const
 
 export function SiteHeader() {
@@ -59,7 +59,6 @@ export function SiteHeader() {
         <nav className="flex flex-col gap-2" aria-label="Móvil">
           {navItems.map((item) => (
             <Link key={item.to} to={item.to} className="flex items-baseline gap-4 border-b border-foam/15 py-3">
-              <span className="label text-celeste">{item.n}</span>
               <span className="display text-[clamp(2rem,7.8vw,3.75rem)]">{item.label}</span>
             </Link>
           ))}
