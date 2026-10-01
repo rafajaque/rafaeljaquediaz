@@ -18,7 +18,7 @@ function Certifications() {
   )
 
   return <>
-    <PageIntro n="02" eyebrow="Formación continua" title={<>Mis <em className="text-azul">certificaciones</em></>}>Formación en análisis de datos, ciberseguridad, gestión de proyectos, herramientas digitales, comunicación y liderazgo.</PageIntro>
+    <PageIntro n="03" eyebrow="Formación continua" title={<>Mis <em className="text-azul">certificaciones</em></>}>Formación en análisis de datos, ciberseguridad, gestión de proyectos, herramientas digitales, comunicación y liderazgo.</PageIntro>
     <section className="mx-auto max-w-7xl px-6 py-16"><CertificationBadge />
       <dl className="mt-12 grid gap-px overflow-hidden rounded-2xl bg-ink/10 sm:grid-cols-3">
         <div className="bg-foam p-6"><dt className="label text-azul">Certificaciones</dt><dd className="mt-3 font-display text-5xl">{certifications.length}</dd></div>

@@ -31,6 +31,22 @@ export const education = [
   { title: 'Ingeniería en Informática', detail: 'Mención Desarrollo de Sistemas' },
   { title: 'Programador Analista', detail: '2024 · Egresado con Excelencia Académica' },
 ]
+export const githubProjects = [
+  {
+    name: 'rafaeljaquediaz',
+    description: 'Portafolio profesional que reúne mi experiencia, formación, certificaciones verificables y vías de contacto.',
+    href: 'https://github.com/rafajaque/rafaeljaquediaz',
+    language: 'TypeScript',
+    technologies: ['React 19', 'TanStack Start', 'Tailwind CSS 4', 'Netlify'],
+  },
+  {
+    name: 'Juego',
+    description: 'Proyecto de videojuego desarrollado con Unity, publicado con una compilación ejecutable para Windows.',
+    href: 'https://github.com/rafajaque/Juego',
+    language: 'Unity',
+    technologies: ['Unity', 'Windows', 'Visual Studio Code'],
+  },
+]
 export const certifications = [
   { title: 'Develop Presentations and Slideshows', issuer: 'Google', hours: 3, date: '2026-08-31', pdf: '/certificados/develop-presentations-slideshows.pdf', verificationUrl: 'https://coursera.org/verify/BDCEG3S4Z32D' },
   { title: 'Fast-Track Data Analysis and Presentations', issuer: 'Google', hours: 1, date: '2026-08-31', pdf: '/certificados/fast-track-data-analysis-presentations.pdf', verificationUrl: 'https://coursera.org/verify/OV2XOWLOO986' },

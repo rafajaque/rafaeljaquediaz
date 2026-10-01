@@ -6,9 +6,10 @@ import { cn } from '@/lib/utils'
 
 export const navItems = [
   { to: '/projects', label: 'Experiencia', n: '01' },
-  { to: '/gallery', label: 'Certificaciones', n: '02' },
-  { to: '/about', label: 'Sobre mí', n: '03' },
-  { to: '/contact', label: 'Contacto', n: '04' },
+  { to: '/proyectos', label: 'Proyectos', n: '02' },
+  { to: '/gallery', label: 'Certificaciones', n: '03' },
+  { to: '/about', label: 'Sobre mí', n: '04' },
+  { to: '/contact', label: 'Contacto', n: '05' },
 ] as const
 
 export function SiteHeader() {
@@ -68,3 +69,4 @@ export function SiteHeader() {
     </header>
   )
 }
+

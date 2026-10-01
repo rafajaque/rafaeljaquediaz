@@ -8,6 +8,7 @@ El diseño conserva la identidad visual azul del proyecto original, ahora aplica
 
 - **Inicio** (`/`) — presentación profesional, áreas de enfoque, habilidades técnicas, experiencia reciente e insignia de Google.
 - **Experiencia** (`/projects`) — trayectoria laboral entre 2017 y 2026, con cargos, empresas y periodos.
+- **Proyectos** (`/proyectos`) — repositorios públicos de GitHub, tecnologías utilizadas y una descripción breve de cada proyecto.
 - **Certificaciones** (`/gallery`) — 34 certificaciones y 229,5 horas de formación, con fecha, PDF y enlace público de Coursera cuando está disponible.
 - **Sobre mí** (`/about`) — perfil profesional, formación académica, habilidades técnicas e inglés avanzado.
 - **Contacto** (`/contact`) — correo, teléfono, GitHub, LinkedIn y formulario de contacto mediante Netlify Forms.
@@ -39,7 +40,7 @@ El formulario y Netlify Image CDN funcionan de forma completa con `netlify dev` 
 
 ## Editar el contenido
 
-- Identidad, datos de contacto, experiencia, habilidades, formación y certificaciones: `src/data/site.ts`.
+- Identidad, datos de contacto, experiencia, proyectos, habilidades, formación y certificaciones: `src/data/site.ts`.
 - Insignia de Google: `public/img/google-data-driven-decision-making.png`.
 - PDFs de respaldo: `public/certificados/`.
 - Contenido y estructura de las páginas: `src/routes/`.
