@@ -16,7 +16,7 @@ export type Social = { label: string; handle: string; href: string }
 
 export const socials: Social[] = [
   { label: 'Github', handle: '@samoriseva', href: 'https://github.com/rafajaque' },
-  { label: 'LinkedIn', handle: 'in/rafael-andrés-jaque-díaz/', href: 'www.linkedin.com/in/rafael-andrés-jaque-díaz' },
+  { label: 'LinkedIn', handle: 'in/rafael-andrés-jaque-díaz/', href: 'www.linkedin.com/in/rafael-andrés-jaque-díaz/' },
 
 ]
 
