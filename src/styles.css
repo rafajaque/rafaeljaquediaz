@@ -1,0 +1,111 @@
+@import "tailwindcss" source("../");
+
+@plugin "tailwindcss-animate";
+
+/*
+ * "Cianotipia" palette — everything is a blue. Ink (prussian) for text and
+ * night sections, ultramarine for action, celeste for light and air, paper
+ * for the page itself. No greys: neutrals are blue-tinted on purpose.
+ */
+@theme {
+  --color-ink: #081a3f;
+  --color-ink-2: #0e2a63;
+  --color-azul: #1d4ed8;
+  --color-azul-deep: #1535a8;
+  --color-cerulean: #2f8fd6;
+  --color-celeste: #7cc7f2;
+  --color-celeste-soft: #cbe8fa;
+  --color-paper: #eef7fd;
+  --color-foam: #f8fcff;
+
+  --font-display: 'Instrument Serif', 'Times New Roman', serif;
+  --font-sans: 'Familjen Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --animate-rise: rise 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+  --animate-drift: drift 18s ease-in-out infinite alternate;
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes drift {
+    from { transform: translate3d(-3%, 0, 0) scale(1); }
+    to { transform: translate3d(3%, -2%, 0) scale(1.08); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply m-0 bg-paper text-ink font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-celeste text-ink;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-azul;
+  }
+}
+
+/* Film grain laid over the whole site — the photographic paper texture. */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.07;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Small uppercase mono captions, like darkroom print labels. */
+.label {
+  @apply font-mono text-[0.7rem] uppercase tracking-[0.18em];
+}
+
+.display {
+  @apply font-display font-normal leading-[0.9] tracking-[-0.02em];
+}
+
+/* Sky gradient used for the hero and contact sections. */
+.sky {
+  background:
+    radial-gradient(120% 80% at 80% 0%, #cbe8fa 0%, transparent 60%),
+    radial-gradient(90% 70% at 0% 100%, #7cc7f2 0%, transparent 55%),
+    linear-gradient(180deg, #eef7fd 0%, #d9effc 100%);
+}
+
+.night {
+  background:
+    radial-gradient(80% 60% at 100% 0%, #1d4ed8 0%, transparent 60%),
+    radial-gradient(70% 70% at 0% 100%, #0e2a63 0%, transparent 70%),
+    #081a3f;
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.333%); }
+}
