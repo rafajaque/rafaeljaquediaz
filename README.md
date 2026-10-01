@@ -8,7 +8,7 @@ El diseño conserva la identidad visual azul del proyecto original, ahora aplica
 
 - **Inicio** (`/`) — presentación profesional, áreas de enfoque, habilidades técnicas, experiencia reciente e insignia de Google.
 - **Experiencia** (`/projects`) — trayectoria laboral entre 2017 y 2026, con cargos, empresas y periodos.
-- **Certificaciones** (`/gallery`) — formación continua en datos, gestión de proyectos, Power BI, Excel, marketing y experiencia del cliente.
+- **Certificaciones** (`/gallery`) — 34 certificaciones y 230,5 horas de formación en datos, ciberseguridad, gestión de proyectos, herramientas digitales, comunicación y liderazgo.
 - **Sobre mí** (`/about`) — perfil profesional, formación académica, habilidades técnicas e inglés avanzado.
 - **Contacto** (`/contact`) — correo, teléfono, GitHub, LinkedIn y formulario de contacto mediante Netlify Forms.
 
@@ -45,5 +45,5 @@ El formulario y Netlify Image CDN funcionan de forma completa con `netlify dev` 
 - Navegación y pie de página: `src/components/SiteHeader.tsx` y `src/components/SiteFooter.tsx`.
 - Formulario estático que Netlify utiliza para registrar los campos: `public/contact.html`.
 
-Los campos de `public/contact.html` deben coincidir con los del formulario React en `src/routes/contact.tsx`. Las certificaciones reproducen los títulos incluidos en el CV; la insignia se presenta por separado sin atribuirle una fecha ni un enlace de validación no proporcionados.
+Los campos de `public/contact.html` deben coincidir con los del formulario React en `src/routes/contact.tsx`. Las certificaciones reproducen los nombres, instituciones y horas del archivo `Certificados.xlsx`; la insignia se presenta por separado sin atribuirle una fecha ni un enlace de validación no proporcionados.
 
