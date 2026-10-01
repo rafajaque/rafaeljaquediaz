@@ -33,6 +33,20 @@ export const education = [
 ]
 export const githubProjects = [
   {
+    name: 'Zeon-Arduino',
+    description: 'Adaptación de Tamaguino, de Alojz Jakob, como una mascota virtual con apariencia de dragón para Arduino y distintas placas y pantallas. En desarrollo, pendiente de pruebas en hardware.',
+    href: 'https://github.com/rafajaque/Zeon-Arduino',
+    language: 'Arduino',
+    technologies: ['Arduino IDE', 'SSD1325', 'SH1106', 'WiFi Kit 32'],
+  },
+  {
+    name: 'rafajaque',
+    description: 'Perfil profesional de GitHub con mi presentación, experiencia, formación y tecnologías, acompañado de recursos visuales para temas claro y oscuro.',
+    href: 'https://github.com/rafajaque/rafajaque',
+    language: 'Markdown',
+    technologies: ['Markdown', 'HTML', 'SVG'],
+  },
+  {
     name: 'rafaeljaquediaz',
     description: 'Portafolio profesional que reúne mi experiencia, formación, certificaciones verificables y vías de contacto.',
     href: 'https://github.com/rafajaque/rafaeljaquediaz',
