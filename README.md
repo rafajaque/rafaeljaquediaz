@@ -1,32 +1,49 @@
-# Rafael Andrés Jaque Díaz
+# Rafael Andrés Jaque Díaz — Portafolio
 
-Portafolio profesional en español de Rafael Jaque, Ingeniero Informático y Gestor de Proyectos Tecnológicos. El contenido está basado en su CV.
+Portafolio profesional de Rafael Jaque, Ingeniero Informático y Gestor de Proyectos Tecnológicos. El sitio presenta su experiencia en análisis de datos y procesos, soporte TI, seguridad electrónica e integración de sistemas. Todo el contenido está basado en su CV.
+
+El diseño conserva la identidad visual azul del proyecto original, ahora aplicada a una presentación profesional centrada en tecnología, datos y gestión. La insignia oficial **Google Data-Driven Decision Making** mantiene sus colores originales.
 
 ## Páginas
 
-- Inicio: presentación, áreas de enfoque, habilidades, experiencia reciente e insignia de Google.
-- Experiencia (/projects): cargos y empresas de 2017 a 2026.
-- Certificaciones (/gallery): cursos del CV e insignia Google Data-Driven Decision Making.
-- Sobre mí (/about): perfil, formación académica, habilidades e idiomas.
-- Contacto (/contact): correo, teléfono, perfiles profesionales y formulario de Netlify.
+- **Inicio** (`/`) — presentación profesional, áreas de enfoque, habilidades técnicas, experiencia reciente e insignia de Google.
+- **Experiencia** (`/projects`) — trayectoria laboral entre 2017 y 2026, con cargos, empresas y periodos.
+- **Certificaciones** (`/gallery`) — formación continua en datos, gestión de proyectos, Power BI, Excel, marketing y experiencia del cliente.
+- **Sobre mí** (`/about`) — perfil profesional, formación académica, habilidades técnicas e inglés avanzado.
+- **Contacto** (`/contact`) — correo, teléfono, GitHub, LinkedIn y formulario de contacto mediante Netlify Forms.
 
-Se conservan las rutas originales para mantener los enlaces existentes. No se atribuyen proyectos, fotografías, logros cuantitativos ni instituciones educativas que no figuren en el CV.
+Las rutas `/projects` y `/gallery` se conservan para mantener compatibles los enlaces existentes, aunque ahora representan experiencia y certificaciones.
 
-## Desarrollo
+## Tecnologías
 
-TanStack Start, React 19, TypeScript, Tailwind CSS 4 y Netlify.
+- [TanStack Start](https://tanstack.com/start) y React 19 con rutas basadas en archivos.
+- TypeScript y Tailwind CSS 4 con una paleta azul personalizada en `src/styles.css`.
+- [Lucide](https://lucide.dev/) para iconos.
+- **Netlify Image CDN** para entregar la insignia en WebP y tamaños adaptables, con el archivo local como respaldo.
+- **Netlify Forms** para recibir los mensajes enviados desde el formulario de contacto.
 
-    pnpm install --frozen-lockfile
-    pnpm dev
-    pnpm build
+## Ejecutar localmente
 
-El formulario requiere Netlify Forms habilitado en el despliegue. Los enlaces de correo y teléfono funcionan de forma independiente. La insignia utiliza Picture y Netlify Image CDN en producción, con el archivo local como respaldo si el CDN no está disponible.
+```bash
+pnpm install --frozen-lockfile
+pnpm dev
+```
+
+Para comprobar la versión de producción:
+
+```bash
+pnpm build
+```
+
+El formulario y Netlify Image CDN funcionan de forma completa con `netlify dev` o en una vista previa de despliegue. Los enlaces directos de correo y teléfono funcionan de manera independiente.
 
 ## Editar el contenido
 
-- Perfil, experiencia, habilidades, formación y certificaciones: src/data/site.ts.
-- Insignia original: public/img/google-data-driven-decision-making.png.
-- Presentación y secciones: src/routes/.
-- Formulario estático de registro para Netlify: public/contact.html. Sus campos deben coincidir con los del formulario React.
+- Identidad, datos de contacto, experiencia, habilidades, formación y certificaciones: `src/data/site.ts`.
+- Insignia de Google: `public/img/google-data-driven-decision-making.png`.
+- Contenido y estructura de las páginas: `src/routes/`.
+- Navegación y pie de página: `src/components/SiteHeader.tsx` y `src/components/SiteFooter.tsx`.
+- Formulario estático que Netlify utiliza para registrar los campos: `public/contact.html`.
 
-Las certificaciones conservan los títulos del CV; la insignia adjunta se presenta por separado, sin inventar fecha ni enlace de validación.
+Los campos de `public/contact.html` deben coincidir con los del formulario React en `src/routes/contact.tsx`. Las certificaciones reproducen los títulos incluidos en el CV; la insignia se presenta por separado sin atribuirle una fecha ni un enlace de validación no proporcionados.
+
