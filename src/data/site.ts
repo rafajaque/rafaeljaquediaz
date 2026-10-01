@@ -3,23 +3,21 @@
  * Projects live in content/projects/*.md (content-collections).
  */
 export const site = {
-  name: 'Luz Marín',
-  role: 'Photographer & visual designer',
-  location: 'Montevideo — Buenos Aires',
-  email: 'hola@luzmarin.studio',
-  tagline: 'I make pictures with the sky.',
+  name: 'Rafael Andrés Jaque Díaz',
+  role: 'Ingeniero Informatico',
+  location: 'Santiago - Chile',
+  email: 'rafajaqued@gmail.com',
+  tagline: 'Buscando nuevas oportunidades.',
   description:
-    'Luz Marín is a photographer and visual designer working between Montevideo and Buenos Aires, making cyanotypes, photobooks and identities in every shade of blue.',
+    'Rafael Jaque programador e ingeniero informatico.',
 }
 
 export type Social = { label: string; handle: string; href: string }
 
 export const socials: Social[] = [
-  { label: 'Instagram', handle: '@luzmarin.azul', href: 'https://instagram.com/' },
-  { label: 'Behance', handle: 'luzmarin', href: 'https://www.behance.net/' },
-  { label: 'LinkedIn', handle: 'in/luzmarin', href: 'https://www.linkedin.com/' },
-  { label: 'Are.na', handle: 'luz-marin', href: 'https://www.are.na/' },
-  { label: 'Vimeo', handle: 'luzmarin', href: 'https://vimeo.com/' },
+  { label: 'Github', handle: '@samoriseva', href: 'https://github.com/rafajaque' },
+  { label: 'LinkedIn', handle: 'in/rafael-andrés-jaque-díaz/', href: 'www.linkedin.com/in/rafael-andrés-jaque-díaz' },
+
 ]
 
 export type Series = 'Río' | 'Cianotipia' | 'Ciudad'
