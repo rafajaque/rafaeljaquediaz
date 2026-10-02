@@ -5,15 +5,15 @@ import { site, socials } from '@/data/site'
 export function SiteFooter() {
   return (
     <footer className="night relative overflow-hidden text-foam">
-      <div className="mx-auto max-w-7xl px-6 pt-24 pb-10">
+      <div className="mx-auto max-w-7xl px-6 pt-14 pb-10">
         <p className="label text-celeste">Conversemos sobre tecnología y nuevas oportunidades</p>
         <Link to="/contact" className="group mt-4 block">
-          <span className="display block text-[clamp(3.5rem,11vw,10rem)] transition-colors group-hover:text-celeste">
+          <span className="display block text-[clamp(2rem,4vw,3.5rem)] transition-colors group-hover:text-celeste">
             Hablemos <em className="text-celeste group-hover:text-foam">↗</em>
           </span>
         </Link>
 
-        <div className="mt-20 grid gap-10 border-t border-foam/15 pt-10 md:grid-cols-[1fr_auto]">
+        <div className="mt-10 grid gap-10 border-t border-foam/15 pt-10 md:grid-cols-[1fr_auto]">
           <ul className="flex flex-wrap gap-x-8 gap-y-3">
             {socials.map((s) => (
               <li key={s.label}>
@@ -33,3 +33,4 @@ export function SiteFooter() {
     </footer>
   )
 }
+

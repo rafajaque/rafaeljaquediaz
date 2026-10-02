@@ -5,10 +5,11 @@ import { site } from '@/data/site'
 import { cn } from '@/lib/utils'
 
 export const navItems = [
-  { to: '/projects', label: 'Experiencia', n: '01' },
-  { to: '/gallery', label: 'Certificaciones', n: '02' },
-  { to: '/about', label: 'Sobre mí', n: '03' },
-  { to: '/contact', label: 'Contacto', n: '04' },
+  { to: '/projects', label: 'Experiencia' },
+  { to: '/proyectos', label: 'Proyectos' },
+  { to: '/gallery', label: 'Certificaciones' },
+  { to: '/about', label: 'Sobre mí' },
+  { to: '/contact', label: 'Contacto' },
 ] as const
 
 export function SiteHeader() {
@@ -21,7 +22,7 @@ export function SiteHeader() {
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
       <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-ink/10 bg-foam/75 py-2 pr-2 pl-5 shadow-[0_10px_40px_-20px_rgba(8,26,63,0.45)] backdrop-blur-xl">
         <Link to="/" className="group flex items-baseline gap-2">
-          <span className="font-display text-2xl italic leading-none">{site.shortName}</span>
+          <span className="font-display text-2xl font-medium leading-none">{site.shortName}</span>
           <span className="label hidden text-azul sm:inline">/ TI</span>
         </Link>
 
@@ -58,7 +59,6 @@ export function SiteHeader() {
         <nav className="flex flex-col gap-2" aria-label="Móvil">
           {navItems.map((item) => (
             <Link key={item.to} to={item.to} className="flex items-baseline gap-4 border-b border-foam/15 py-3">
-              <span className="label text-celeste">{item.n}</span>
               <span className="display text-[clamp(2rem,7.8vw,3.75rem)]">{item.label}</span>
             </Link>
           ))}
@@ -68,3 +68,4 @@ export function SiteHeader() {
     </header>
   )
 }
+

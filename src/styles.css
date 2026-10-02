@@ -18,9 +18,9 @@
   --color-paper: #eef7fd;
   --color-foam: #f8fcff;
 
-  --font-display: 'Instrument Serif', 'Times New Roman', serif;
+  --font-display: 'Familjen Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Familjen Grotesk', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-mono: 'Familjen Grotesk', ui-sans-serif, system-ui, sans-serif;
 
   --animate-rise: rise 0.9s cubic-bezier(0.2, 0.7, 0.1, 1) both;
   --animate-drift: drift 18s ease-in-out infinite alternate;
@@ -62,13 +62,13 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Small uppercase mono captions, like darkroom print labels. */
+/* One family throughout; size and weight establish hierarchy. */
 .label {
-  @apply font-mono text-[0.7rem] uppercase tracking-[0.18em];
+  @apply font-sans text-xs font-medium uppercase tracking-[0.08em];
 }
 
 .display {
-  @apply font-display font-normal leading-[0.9] tracking-[-0.02em];
+  @apply font-display font-medium leading-[1.1] tracking-[-0.02em];
 }
 
 /* Sky gradient used for the hero and contact sections. */
@@ -109,3 +109,6 @@
   from { transform: translateX(0); }
   to { transform: translateX(-33.333%); }
 }
+
+.display em { font-style: normal; }
+

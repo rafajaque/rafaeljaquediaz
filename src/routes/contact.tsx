@@ -71,7 +71,6 @@ function Contact() {
         {/* Left: direct lines */}
         <div className="lg:col-span-5">
           <p className="label flex animate-rise gap-4 text-azul">
-            <span>04</span>
             <span>Contacto</span>
           </p>
           <h1 className="display mt-6 animate-rise text-[clamp(3rem,8vw,6rem)] [animation-delay:100ms]">
@@ -88,7 +87,7 @@ function Contact() {
           >
             <span>
               <span className="label block text-ink/50">Email</span>
-              <span className="break-all font-display text-2xl italic">{site.email}</span>
+              <span className="break-all font-display text-2xl font-medium">{site.email}</span>
             </span>
             <span className="grid size-10 shrink-0 place-items-center rounded-full bg-ink text-foam transition-colors group-hover:bg-azul">
               {copied ? <Check size={16} /> : <Copy size={16} />}
@@ -189,3 +188,4 @@ function Contact() {
     </section>
   )
 }
+
