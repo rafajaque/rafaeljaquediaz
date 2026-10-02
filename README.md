@@ -7,7 +7,7 @@ El diseño conserva la identidad visual azul del proyecto original, ahora aplica
 ## Páginas
 
 - **Inicio** (`/`) — presentación profesional, áreas de enfoque, habilidades técnicas, experiencia reciente e insignia de Google.
-- **Experiencia** (`/projects`) — trayectoria laboral entre 2017 y 2026, con cargos, empresas y periodos.
+- **Experiencia** (`/projects`) — trayectoria laboral entre 2018 y 2026, con cargos, empresas, meses y duración cuando están disponibles.
 - **Proyectos** (`/proyectos`) — repositorios públicos de GitHub, tecnologías utilizadas y una descripción breve de cada proyecto.
 - **Certificaciones** (`/gallery`) — 34 certificaciones y 229,5 horas de formación, con fecha, PDF y enlace público de Coursera cuando está disponible.
 - **Sobre mí** (`/about`) — perfil profesional, formación académica, habilidades técnicas e inglés avanzado.
