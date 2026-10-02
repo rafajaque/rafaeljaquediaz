@@ -17,7 +17,7 @@ function Experience() {
           <h2 className="mt-4 font-display text-3xl md:text-4xl">{item.role}</h2>
           <p className="mt-3 text-sm leading-relaxed text-ink/60">{item.employment} · {item.location} · {item.modality}</p>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/75">{item.description}</p>
-          <ul className="mt-5 flex flex-wrap gap-2" aria-label={`Áreas de trabajo en ${item.company}`}>
+          <ul className="mt-5 flex flex-wrap gap-2" aria-label={`Tecnologías y competencias en ${item.company}`}>
             {item.areas.map(area => <li key={area} className="rounded-full bg-celeste-soft/65 px-3 py-1.5 text-sm text-ink/75">{area}</li>)}
           </ul>
         </div>
