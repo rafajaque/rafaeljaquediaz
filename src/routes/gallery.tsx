@@ -2,6 +2,8 @@ import { createFileRoute } from '@tanstack/react-router'
 import { BadgeCheck, ExternalLink, FileText } from 'lucide-react'
 import { PageIntro } from '@/components/PageIntro'
 import { CertificationBadge } from '@/components/CertificationBadge'
+import { AnimatedCounter } from '@/components/AnimatedCounter'
+import { Reveal } from '@/components/Reveal'
 import { certificationHours, certifications, site } from '@/data/site'
 
 export const Route = createFileRoute('/gallery')({
@@ -21,14 +23,15 @@ function Certifications() {
     <PageIntro eyebrow="Formación continua" title={<>Mis <em className="text-azul">certificaciones</em></>}>Formación en análisis de datos, ciberseguridad, gestión de proyectos, herramientas digitales, comunicación y liderazgo.</PageIntro>
     <section className="mx-auto max-w-7xl px-6 py-16"><CertificationBadge />
       <dl className="mt-12 grid gap-px overflow-hidden rounded-2xl bg-ink/10 sm:grid-cols-3">
-        <div className="bg-foam p-6"><dt className="label text-azul">Certificaciones</dt><dd className="mt-3 font-display text-5xl">{certifications.length}</dd></div>
-        <div className="bg-foam p-6"><dt className="label text-azul">Horas de formación</dt><dd className="mt-3 font-display text-5xl">{certificationHours.toLocaleString('es-CL')}</dd></div>
-        <div className="bg-foam p-6"><dt className="label text-azul">Instituciones</dt><dd className="mt-3 font-display text-5xl">{certificationsByIssuer.length}</dd></div>
+        <Reveal className="bg-foam p-6"><dt className="label text-azul">Certificaciones</dt><dd className="mt-3 font-display text-5xl"><AnimatedCounter value={certifications.length} /></dd></Reveal>
+        <Reveal delay={100} className="bg-foam p-6"><dt className="label text-azul">Horas de formación</dt><dd className="mt-3 font-display text-5xl"><AnimatedCounter value={certificationHours} decimals={certificationHours % 1 ? 1 : 0} /></dd></Reveal>
+        <Reveal delay={200} className="bg-foam p-6"><dt className="label text-azul">Instituciones</dt><dd className="mt-3 font-display text-5xl"><AnimatedCounter value={certificationsByIssuer.length} /></dd></Reveal>
       </dl>
 
       <div className="mt-20 space-y-20">
         {certificationsByIssuer.map(([issuer, items]) => (
-          <section key={issuer} aria-labelledby={`issuer-${issuer.replace(/\W+/g, '-').toLowerCase()}`}>
+          <Reveal key={issuer}>
+          <section aria-labelledby={`issuer-${issuer.replace(/\W+/g, '-').toLowerCase()}`}>
             <div className="flex flex-wrap items-end justify-between gap-4 border-b border-ink/25 pb-5">
               <h2 id={`issuer-${issuer.replace(/\W+/g, '-').toLowerCase()}`} className="font-display text-4xl md:text-5xl">{issuer}</h2>
               <p className="label text-azul">{items.length} {items.length === 1 ? 'certificación' : 'certificaciones'}</p>
@@ -48,6 +51,7 @@ function Certifications() {
               </li>)}
             </ul>
           </section>
+          </Reveal>
         ))}
       </div>
     </section>

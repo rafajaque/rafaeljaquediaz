@@ -97,11 +97,56 @@
   background-size: 100% 1px;
 }
 
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 700ms cubic-bezier(0.2, 0.7, 0.1, 1),
+    transform 700ms cubic-bezier(0.2, 0.7, 0.1, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.artifact-link {
+  @apply flex items-center justify-between gap-3 rounded-2xl border border-foam/15 bg-foam/[0.06] px-5 py-4 text-sm font-medium text-foam transition-[transform,background-color,border-color] duration-300;
+}
+
+.artifact-link:hover {
+  @apply -translate-y-1 border-celeste/60 bg-foam/10;
+}
+
+@supports (animation-timeline: view()) {
+  .sky::after {
+    content: '';
+    position: absolute;
+    inset: auto -10% -55% 35%;
+    height: 24rem;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgb(47 143 214 / 0.32), transparent 68%);
+    animation: hero-drift linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 42rem;
+    pointer-events: none;
+  }
+
+  @keyframes hero-drift {
+    to { transform: translate3d(-18%, -25%, 0) scale(1.25); }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
 

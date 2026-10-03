@@ -8,7 +8,7 @@ El diseño conserva la identidad visual azul del proyecto original, ahora aplica
 
 - **Inicio** (`/`) — presentación profesional, áreas de enfoque, habilidades técnicas, experiencia reciente e insignia de Google.
 - **Experiencia** (`/projects`) — trayectoria laboral entre 2018 y 2026, con cargos, empresas, meses y duración cuando están disponibles.
-- **Proyectos** (`/proyectos`) — repositorios públicos de GitHub, tecnologías utilizadas y una descripción breve de cada proyecto.
+- **Proyectos** (`/proyectos`) — caso de estudio interactivo de Colchagua, artefactos reales de BI y repositorios públicos de GitHub.
 - **Certificaciones** (`/gallery`) — 34 certificaciones y 229,5 horas de formación, con fecha, PDF y enlace público de Coursera cuando está disponible.
 - **Sobre mí** (`/about`) — perfil profesional, formación académica, habilidades técnicas e inglés avanzado.
 - **Contacto** (`/contact`) — correo, teléfono, GitHub, LinkedIn y formulario de contacto mediante Netlify Forms.
@@ -20,6 +20,7 @@ Las rutas `/projects` y `/gallery` se conservan para mantener compatibles los en
 - [TanStack Start](https://tanstack.com/start) y React 19 con rutas basadas en archivos.
 - TypeScript y Tailwind CSS 4 con una paleta azul personalizada en `src/styles.css`.
 - [Lucide](https://lucide.dev/) para iconos.
+- Componentes React propios para contadores animados, apariciones al hacer scroll y visualización interactiva de datos, con soporte para `prefers-reduced-motion`.
 - **Netlify Image CDN** para entregar la insignia en WebP y tamaños adaptables, con el archivo local como respaldo.
 - **Netlify Forms** para recibir los mensajes enviados desde el formulario de contacto.
 
@@ -37,6 +38,25 @@ pnpm build
 ```
 
 El formulario y Netlify Image CDN funcionan de forma completa con `netlify dev` o en una vista previa de despliegue. Los enlaces directos de correo y teléfono funcionan de manera independiente.
+
+## Arquitectura y despliegue
+
+- `src/components/` contiene piezas reutilizables de interfaz, animación, navegación e imágenes.
+- `src/data/site.ts` separa el contenido profesional de la presentación.
+- `src/routes/` define las páginas mediante el enrutamiento de TanStack Start.
+- Netlify construye automáticamente cada actualización de `main`; los pull requests permiten revisar los cambios antes de publicarlos.
+- GitHub Actions ejecuta TypeScript y la compilación de producción en cada pull request y actualización de `main`.
+- El proyecto se valida localmente con `pnpm check` y `git diff --check` antes de integrar cambios.
+
+## Caso de BI: Colchagua
+
+La página de proyectos presenta el problema, enfoque, datos y conclusiones del análisis de resiliencia agrícola en Colchagua. Incluye una visualización interactiva de prioridad y dependencia agrícola, además de enlaces directos al [notebook ejecutado](https://github.com/rafajaque/Investigaci-n-Colchagua-/blob/main/Colchagua_Resiliencia.ipynb), el archivo de Power BI, el informe y el repositorio reproducible.
+
+Las conclusiones distinguen correlación de causalidad y explican las limitaciones de los datos. El índice sirve para priorizar diagnósticos; no representa una probabilidad de pérdida ni identifica empresas individuales vulnerables.
+
+## Uso de inteligencia artificial
+
+ChatGPT y Codex se utilizaron como apoyo para auditoría, programación, extracción y redacción. Rafael revisa los datos, valida los resultados y es responsable de las decisiones técnicas y del contenido publicado. El repositorio del caso Colchagua conserva fuentes, hashes, verificaciones y código reproducible para facilitar su revisión y defensa.
 
 ## Editar el contenido
 

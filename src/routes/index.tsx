@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { ArrowRight, Code2, Database, ShieldCheck } from 'lucide-react'
-import { site, skills, experience } from '@/data/site'
+import { site, skills, experience, certificationHours, certifications, githubProjects } from '@/data/site'
 import { CertificationBadge } from '@/components/CertificationBadge'
+import { AnimatedCounter } from '@/components/AnimatedCounter'
+import { Reveal } from '@/components/Reveal'
 
 export const Route = createFileRoute('/')({ component: Home })
 
@@ -19,11 +21,20 @@ function Home() {
             <Link to="/contact" className="rounded-full border border-ink/25 px-6 py-3 hover:bg-foam">Hablemos</Link>
           </div>
         </div>
-        <aside className="night rounded-2xl p-8 text-foam md:p-10" aria-label="Enfoque profesional">
+        <aside className="night rounded-2xl p-8 text-foam transition-transform duration-500 hover:-translate-y-2 md:p-10" aria-label="Enfoque profesional">
           <p className="label text-celeste">Tecnología con propósito</p>
           <div className="my-10 font-display text-7xl font-medium" aria-hidden="true">RJ<span className="text-celeste">.</span></div>
           {[{ icon: Code2, title: 'Integración de sistemas', text: 'Desarrollo y análisis de requerimientos.' }, { icon: Database, title: 'Decisiones basadas en datos', text: 'Análisis de procesos y herramientas de BI.' }, { icon: ShieldCheck, title: 'Seguridad integral', text: 'Soporte TI y experiencia en CCTV.' }].map(({ icon: Icon, title, text }) => <div key={title} className="flex gap-4 border-t border-foam/20 py-5"><Icon className="mt-1 shrink-0 text-celeste" size={22} /><div><h2 className="text-lg font-medium">{title}</h2><p className="mt-1 text-foam/70">{text}</p></div></div>)}
         </aside>
+      </div>
+    </section>
+    <section className="border-y border-ink/10 bg-foam" aria-label="Resumen profesional">
+      <div className="mx-auto grid max-w-7xl gap-px bg-ink/10 sm:grid-cols-3">
+        {[
+          { value: certifications.length, label: 'Certificaciones verificables' },
+          { value: certificationHours, decimals: certificationHours % 1 ? 1 : 0, label: 'Horas de formación' },
+          { value: githubProjects.length, label: 'Repositorios públicos' },
+        ].map((stat, index) => <Reveal key={stat.label} delay={index * 100} className="bg-foam px-6 py-8"><p className="font-display text-5xl text-azul"><AnimatedCounter value={stat.value} decimals={stat.decimals} /></p><p className="mt-2 text-sm text-ink/60">{stat.label}</p></Reveal>)}
       </div>
     </section>
     <section className="mx-auto max-w-7xl px-6 py-24">
