@@ -4,7 +4,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev --port 3000",
-    "build": "vite build"
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "check": "pnpm typecheck && pnpm build"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "1.3.11",
@@ -43,3 +45,4 @@
     "vite": "7.3.6"
   }
 }
+

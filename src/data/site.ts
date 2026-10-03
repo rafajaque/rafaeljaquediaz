@@ -83,11 +83,11 @@ export const education = [
 ]
 export const githubProjects = [
   {
-    name: 'Trabajo-de-investigacion-Colchagua',
-    description: 'Investigación de datos sobre la relación entre empleo agrícola, actividad económica, consumo y captaciones financieras en comunas de Colchagua, con un proceso ETL y un informe interactivo en Power BI.',
-    href: 'https://github.com/rafajaque/Trabajo-de-investigacion-Colchagua',
-    language: 'Jupyter Notebook',
-    technologies: ['Python', 'Jupyter Notebook', 'Power BI', 'Excel'],
+    name: 'Investigación Colchagua',
+    description: 'Sistema de apoyo a decisiones sobre resiliencia agrícola: ETL reproducible, datamart, análisis de sensibilidad, clustering, forecast y un dashboard de siete páginas en Power BI.',
+    href: 'https://github.com/rafajaque/Investigaci-n-Colchagua-',
+    language: 'Power Query',
+    technologies: ['Python', 'Jupyter Notebook', 'Power BI', 'DAX', 'Power Query', 'SQLite'],
   },
   {
     name: 'Zeon-Arduino',

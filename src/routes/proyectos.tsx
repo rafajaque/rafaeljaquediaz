@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { ArrowUpRight, Github } from 'lucide-react'
 import { PageIntro } from '@/components/PageIntro'
+import { ColchaguaCaseStudy } from '@/components/ColchaguaCaseStudy'
+import { Reveal } from '@/components/Reveal'
 import { githubProjects, site } from '@/data/site'
 
 export const Route = createFileRoute('/proyectos')({
@@ -13,6 +15,8 @@ function Projects() {
     <PageIntro eyebrow="Código y desarrollo" title={<>Mis <em className="text-azul">proyectos</em></>}>
       Repositorios públicos donde comparto proyectos de desarrollo, experimentación y mi trabajo profesional.
     </PageIntro>
+
+    <ColchaguaCaseStudy />
 
     <section className="mx-auto max-w-7xl px-6 py-20" aria-label="Repositorios públicos de GitHub">
       <div className="mb-10 flex flex-wrap items-end justify-between gap-5 border-b border-ink/20 pb-6">
@@ -32,7 +36,8 @@ function Projects() {
 
       <ol className="grid gap-6 md:grid-cols-2">
         {githubProjects.map((project) => (
-          <li key={project.href} className="group flex min-h-80 flex-col rounded-2xl border border-ink/15 bg-foam p-7 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-azul/50 hover:shadow-[0_24px_60px_-36px_rgba(8,26,63,0.6)] md:p-9">
+          <li key={project.href}>
+          <Reveal className="group flex min-h-80 h-full flex-col rounded-2xl border border-ink/15 bg-foam p-7 transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-azul/50 hover:shadow-[0_24px_60px_-36px_rgba(8,26,63,0.6)] md:p-9">
             <div className="flex items-start justify-between gap-5">
               <span className="label text-azul">{project.language}</span>
               <Github size={24} className="text-ink/35 transition-colors group-hover:text-azul" aria-hidden="true" />
@@ -51,6 +56,7 @@ function Projects() {
             >
               Explorar repositorio <ArrowUpRight size={17} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
+          </Reveal>
           </li>
         ))}
       </ol>
