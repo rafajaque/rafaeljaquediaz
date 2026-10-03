@@ -83,6 +83,13 @@ export const education = [
 ]
 export const githubProjects = [
   {
+    name: 'Trabajo-de-investigacion-Colchagua',
+    description: 'Investigación de datos sobre la relación entre empleo agrícola, actividad económica, consumo y captaciones financieras en comunas de Colchagua, con un proceso ETL y un informe interactivo en Power BI.',
+    href: 'https://github.com/rafajaque/Trabajo-de-investigacion-Colchagua',
+    language: 'Jupyter Notebook',
+    technologies: ['Python', 'Jupyter Notebook', 'Power BI', 'Excel'],
+  },
+  {
     name: 'Zeon-Arduino',
     description: 'Adaptación de Tamaguino, de Alojz Jakob, como una mascota virtual con apariencia de dragón para Arduino y distintas placas y pantallas. En desarrollo, pendiente de pruebas en hardware.',
     href: 'https://github.com/rafajaque/Zeon-Arduino',
