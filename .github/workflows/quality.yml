@@ -30,9 +30,9 @@ jobs:
       - name: Instalar dependencias
         run: pnpm install --frozen-lockfile
 
-      - name: Verificar TypeScript
-        run: pnpm typecheck
-
       - name: Compilar para producción
         run: pnpm build
+
+      - name: Verificar TypeScript
+        run: pnpm typecheck
 
