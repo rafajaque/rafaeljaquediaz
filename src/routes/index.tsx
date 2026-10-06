@@ -1,33 +1,16 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { ArrowRight, Code2, Database, ShieldCheck } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { site, skills, experience, certificationHours, certifications, githubProjects } from '@/data/site'
 import { CertificationBadge } from '@/components/CertificationBadge'
 import { AnimatedCounter } from '@/components/AnimatedCounter'
+import { InteractiveHero } from '@/components/InteractiveHero'
 import { Reveal } from '@/components/Reveal'
 
 export const Route = createFileRoute('/')({ component: Home })
 
 function Home() {
   return <>
-    <section className="sky relative overflow-hidden pt-36 pb-20 md:pt-44">
-      <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-[1.3fr_1fr]">
-        <div>
-          <p className="label text-azul">Ingeniería informática · Gestión de proyectos</p>
-          <h1 className="display mt-7 text-[clamp(2.75rem,5.5vw,5.25rem)]">Rafael Andrés<br /><em className="text-azul">Jaque Díaz.</em></h1>
-          <p className="mt-8 max-w-xl text-xl leading-relaxed text-ink/75">Integro tecnología, datos y gestión para aportar valor a las organizaciones.</p>
-          <p className="mt-5 max-w-xl leading-relaxed text-ink/70">Mi experiencia reúne análisis de datos y procesos, soporte TI, seguridad electrónica y tecnología aplicada a la industria.</p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link to="/projects" className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-foam hover:bg-azul">Mi experiencia <ArrowRight size={17} /></Link>
-            <Link to="/contact" className="rounded-full border border-ink/25 px-6 py-3 hover:bg-foam">Hablemos</Link>
-          </div>
-        </div>
-        <aside className="night rounded-2xl p-8 text-foam transition-transform duration-500 hover:-translate-y-2 md:p-10" aria-label="Enfoque profesional">
-          <p className="label text-celeste">Tecnología con propósito</p>
-          <div className="my-10 font-display text-7xl font-medium" aria-hidden="true">RJ<span className="text-celeste">.</span></div>
-          {[{ icon: Code2, title: 'Integración de sistemas', text: 'Desarrollo y análisis de requerimientos.' }, { icon: Database, title: 'Decisiones basadas en datos', text: 'Análisis de procesos y herramientas de BI.' }, { icon: ShieldCheck, title: 'Seguridad integral', text: 'Soporte TI y experiencia en CCTV.' }].map(({ icon: Icon, title, text }) => <div key={title} className="flex gap-4 border-t border-foam/20 py-5"><Icon className="mt-1 shrink-0 text-celeste" size={22} /><div><h2 className="text-lg font-medium">{title}</h2><p className="mt-1 text-foam/70">{text}</p></div></div>)}
-        </aside>
-      </div>
-    </section>
+    <InteractiveHero />
     <section className="border-y border-ink/10 bg-foam" aria-label="Resumen profesional">
       <div className="mx-auto grid max-w-7xl gap-px bg-ink/10 sm:grid-cols-3">
         {[
@@ -52,4 +35,3 @@ function Home() {
     <section className="mx-auto max-w-4xl px-6 pb-24 text-center"><p className="label text-azul">Sobre mí</p><p className="mt-6 text-xl leading-relaxed text-ink/75">{site.profile}</p><Link to="/about" className="label mt-8 inline-block text-azul">Conocer mi perfil →</Link></section>
   </>
 }
-
