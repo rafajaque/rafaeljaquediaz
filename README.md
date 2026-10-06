@@ -6,9 +6,9 @@ El diseño conserva la identidad visual azul del proyecto original, ahora aplica
 
 ## Páginas
 
-- **Inicio** (`/`) — presentación profesional, áreas de enfoque, habilidades técnicas, experiencia reciente e insignia de Google.
+- **Inicio** (`/`) — presentación profesional con mensajes rotativos, respuesta visual al cursor, áreas de enfoque, habilidades técnicas, experiencia reciente e insignia de Google.
 - **Experiencia** (`/projects`) — trayectoria laboral entre 2018 y 2026, con cargos, empresas, meses y duración cuando están disponibles.
-- **Proyectos** (`/proyectos`) — caso de estudio interactivo de Colchagua, artefactos reales de BI y repositorios públicos de GitHub.
+- **Proyectos** (`/proyectos`) — caso de estudio interactivo de Colchagua y tarjetas expandibles para los repositorios públicos, con desafío, enfoque, estado, tecnologías y datos verificables.
 - **Certificaciones** (`/gallery`) — 34 certificaciones y 229,5 horas de formación, con fecha, PDF y enlace público de Coursera cuando está disponible.
 - **Sobre mí** (`/about`) — perfil profesional, formación académica, habilidades técnicas e inglés avanzado.
 - **Contacto** (`/contact`) — correo, teléfono, GitHub, LinkedIn y formulario de contacto mediante Netlify Forms.
@@ -68,4 +68,3 @@ ChatGPT y Codex se utilizaron como apoyo para auditoría, programación, extracc
 - Formulario estático que Netlify utiliza para registrar los campos: `public/contact.html`.
 
 Los campos de `public/contact.html` deben coincidir con los del formulario React en `src/routes/contact.tsx`. Las certificaciones reproducen los nombres, instituciones y horas del archivo `Certificados.xlsx`. Los certificados de Coursera enlazan a su verificación pública; los demás muestran el PDF y su número de serie, sin atribuirles una verificación externa no disponible.
-

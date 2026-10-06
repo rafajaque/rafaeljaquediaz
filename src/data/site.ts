@@ -81,41 +81,94 @@ export const education = [
   { title: 'Ingeniería en Informática', detail: 'Mención Desarrollo de Sistemas' },
   { title: 'Programador Analista', detail: '2024 · Egresado con Excelencia Académica' },
 ]
-export const githubProjects = [
+
+export type GitHubProject = {
+  id: string
+  name: string
+  category: string
+  description: string
+  problem: string
+  approach: string
+  status: string
+  href: string
+  language: string
+  technologies: string[]
+  highlights: { value: string; label: string }[]
+  visual: 'data' | 'device' | 'profile' | 'portfolio' | 'game'
+  caseStudyHref?: string
+}
+
+export const githubProjects: GitHubProject[] = [
   {
+    id: 'investigacion-colchagua',
     name: 'Investigación Colchagua',
+    category: 'Business Intelligence · Datos',
     description: 'Sistema de apoyo a decisiones sobre resiliencia agrícola: ETL reproducible, datamart, análisis de sensibilidad, clustering, forecast y un dashboard de siete páginas en Power BI.',
+    problem: 'Priorizar las comunas, sectores y grupos de PYMEs que requieren diagnóstico frente a shocks agrícolas, considerando clima, mercado y dependencia productiva.',
+    approach: 'Integré fuentes productivas, empresariales, climáticas y de mercado en un proceso ETL reproducible, un datamart consultable y un dashboard de Power BI con sensibilidad y forecast.',
+    status: 'Caso documentado con fuentes, verificaciones, notebook ejecutado, Power BI e informe técnico.',
     href: 'https://github.com/rafajaque/Investigaci-n-Colchagua-',
     language: 'Power Query',
     technologies: ['Python', 'Jupyter Notebook', 'Power BI', 'DAX', 'Power Query', 'SQLite'],
+    highlights: [{ value: '33.883 ha', label: 'Superficie analizada' }, { value: '22', label: 'Medidas DAX verificadas' }],
+    visual: 'data',
+    caseStudyHref: '#caso-colchagua',
   },
   {
+    id: 'zeon-arduino',
     name: 'Zeon-Arduino',
+    category: 'Hardware · Código abierto',
     description: 'Adaptación de Tamaguino, de Alojz Jakob, como una mascota virtual con apariencia de dragón para Arduino y distintas placas y pantallas. En desarrollo, pendiente de pruebas en hardware.',
+    problem: 'Adaptar una mascota virtual existente a una identidad de dragón y organizar variantes para diferentes combinaciones de placa y pantalla.',
+    approach: 'Preparé variantes del código fuente para Arduino, SSD1325, SH1106 y WiFi Kit 32, conservando los créditos y la licencia del proyecto original.',
+    status: 'En desarrollo; el repositorio indica que todavía no se ha compilado ni probado en una placa física.',
     href: 'https://github.com/rafajaque/Zeon-Arduino',
     language: 'Arduino',
     technologies: ['Arduino IDE', 'SSD1325', 'SH1106', 'WiFi Kit 32'],
+    highlights: [{ value: 'Arduino', label: 'Entorno principal' }, { value: 'En desarrollo', label: 'Estado actual' }],
+    visual: 'device',
   },
   {
+    id: 'perfil-github',
     name: 'rafajaque',
+    category: 'Marca personal · GitHub',
     description: 'Perfil profesional de GitHub con mi presentación, experiencia, formación y tecnologías, acompañado de recursos visuales para temas claro y oscuro.',
+    problem: 'Presentar la trayectoria, el stack y las vías de contacto en el espacio limitado de un perfil de GitHub.',
+    approach: 'Organicé la información en un README visual con banners adaptables al tema, tablas de experiencia y accesos directos a contacto y repositorios.',
+    status: 'Perfil público activo y mantenido como presentación profesional dentro de GitHub.',
     href: 'https://github.com/rafajaque/rafajaque',
     language: 'Markdown',
     technologies: ['Markdown', 'HTML', 'SVG'],
+    highlights: [{ value: '2 temas', label: 'Claro y oscuro' }, { value: 'README', label: 'Formato principal' }],
+    visual: 'profile',
   },
   {
+    id: 'portafolio',
     name: 'rafaeljaquediaz',
+    category: 'Desarrollo web · Portafolio',
     description: 'Portafolio profesional que reúne mi experiencia, formación, certificaciones verificables y vías de contacto.',
+    problem: 'Reunir experiencia, proyectos, formación y credenciales en una presencia digital clara, accesible y fácil de revisar.',
+    approach: 'Construí una aplicación con React y TanStack Start, contenido estructurado, formularios de Netlify, optimización de imágenes y validación continua en GitHub Actions.',
+    status: 'Publicado en Netlify con despliegue automático desde la rama principal.',
     href: 'https://github.com/rafajaque/rafaeljaquediaz',
     language: 'TypeScript',
     technologies: ['React 19', 'TanStack Start', 'Tailwind CSS 4', 'Netlify'],
+    highlights: [{ value: '34', label: 'Certificaciones publicadas' }, { value: '229,5 h', label: 'Formación registrada' }],
+    visual: 'portfolio',
   },
   {
+    id: 'juego-unity',
     name: 'Juego',
+    category: 'Videojuego · Experimentación',
     description: 'Proyecto de videojuego desarrollado con Unity, publicado con una compilación ejecutable para Windows.',
+    problem: 'Desarrollar y empaquetar un proyecto de videojuego de escritorio utilizando el flujo de trabajo de Unity.',
+    approach: 'El repositorio conserva el proyecto realizado con Unity y una compilación ejecutable preparada para Windows.',
+    status: 'Prototipo público; el repositorio no documenta todavía sus mecánicas o resultados.',
     href: 'https://github.com/rafajaque/Juego',
     language: 'Unity',
     technologies: ['Unity', 'Windows', 'Visual Studio Code'],
+    highlights: [{ value: 'Unity', label: 'Motor utilizado' }, { value: 'Windows', label: 'Compilación disponible' }],
+    visual: 'game',
   },
 ]
 export const certifications = [
@@ -162,4 +215,3 @@ export const badge = {
   width: 800,
   height: 800,
 }
-
