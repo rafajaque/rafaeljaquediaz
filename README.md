@@ -2,14 +2,14 @@
 
 Portafolio profesional de Rafael Jaque, Ingeniero Informático y Gestor de Proyectos Tecnológicos. El sitio presenta su experiencia en análisis de datos y procesos, soporte TI, seguridad electrónica e integración de sistemas. Todo el contenido está basado en su CV.
 
-El diseño conserva la identidad visual azul del proyecto original, ahora aplicada a una presentación profesional centrada en tecnología, datos y gestión. La insignia oficial **Google Data-Driven Decision Making** mantiene sus colores originales.
+El diseño conserva la identidad visual azul del proyecto original y suma un acento naranja cálido para acciones importantes. Degradados suaves, superficies translúcidas, sombras difusas y geometrías ambientales aportan profundidad sin reducir la legibilidad. La insignia oficial **Google Data-Driven Decision Making** mantiene sus colores originales.
 
 ## Páginas
 
-- **Inicio** (`/`) — presentación profesional con mensajes rotativos, respuesta visual al cursor, áreas de enfoque, habilidades técnicas, experiencia reciente e insignia de Google.
+- **Inicio** (`/`) — presentación profesional con mensajes rotativos, botones magnéticos, contadores activados al entrar en pantalla, barras técnicas progresivas, experiencia reciente e insignia de Google.
 - **Experiencia** (`/projects`) — línea de tiempo animada entre 2018 y 2026, con cargos, empresas, duración, funciones y tecnologías que aparecen progresivamente con el desplazamiento.
-- **Proyectos** (`/proyectos`) — caso de estudio interactivo de Colchagua y tarjetas expandibles para los repositorios públicos, con desafío, enfoque, estado, tecnologías y datos verificables.
-- **Certificaciones** (`/gallery`) — 34 certificaciones y 229,5 horas de formación, con fecha, PDF y enlace público de Coursera cuando está disponible.
+- **Proyectos** (`/proyectos`) — caso de estudio interactivo de Colchagua, filtros animados por tecnología y tarjetas expandibles para los repositorios públicos, con desafío, enfoque, estado, tecnologías y datos verificables.
+- **Certificaciones** (`/gallery`) — 34 certificaciones y 229,5 horas de formación, con tarjetas que responden al cursor, fecha, PDF y enlace público de Coursera cuando está disponible.
 - **Sobre mí** (`/about`) — perfil profesional, formación académica, habilidades técnicas e inglés avanzado.
 - **Contacto** (`/contact`) — correo, teléfono, GitHub, LinkedIn y formulario de contacto mediante Netlify Forms.
 
@@ -18,9 +18,10 @@ Las rutas `/projects` y `/gallery` se conservan para mantener compatibles los en
 ## Tecnologías
 
 - [TanStack Start](https://tanstack.com/start) y React 19 con rutas basadas en archivos.
-- TypeScript y Tailwind CSS 4 con una paleta azul personalizada en `src/styles.css`.
+- TypeScript y Tailwind CSS 4 con una paleta azul, un acento naranja accesible y un sistema de superficies en `src/styles.css`.
 - [Lucide](https://lucide.dev/) para iconos.
 - Componentes React propios para contadores animados, apariciones al hacer scroll y visualización interactiva de datos, con soporte para `prefers-reduced-motion`.
+- Indicador global de lectura y transiciones suaves entre rutas, sin bloquear la navegación ni ocultar contenido esencial.
 - **Netlify Image CDN** para entregar la insignia en WebP y tamaños adaptables, con el archivo local como respaldo.
 - **Netlify Forms** para recibir los mensajes enviados desde el formulario de contacto.
 

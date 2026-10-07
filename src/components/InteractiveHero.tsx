@@ -2,6 +2,8 @@ import type { CSSProperties, PointerEvent as ReactPointerEvent } from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, Code2, Database, Pause, Play, ShieldCheck } from 'lucide-react'
+import { AmbientBackdrop } from '@/components/AmbientBackdrop'
+import { Magnetic } from '@/components/Magnetic'
 
 const messages = [
   { lead: 'Transformo', accent: 'datos', end: 'en decisiones.' },
@@ -90,7 +92,7 @@ export function InteractiveHero() {
   return (
     <section
       ref={sectionRef}
-      className="sky hero-interactive relative overflow-hidden pt-36 pb-20 md:pt-44"
+      className="sky hero-interactive depth-section relative overflow-hidden pt-36 pb-20 md:pt-44"
       onPointerMove={handlePointerMove}
       onPointerLeave={resetPointer}
       style={{
@@ -100,6 +102,7 @@ export function InteractiveHero() {
         '--hero-tilt-y': '0deg',
       } as CSSProperties}
     >
+      <AmbientBackdrop />
       <div className="hero-pointer-glow" aria-hidden="true" />
       <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-[1.3fr_1fr]">
         <div>
@@ -143,14 +146,14 @@ export function InteractiveHero() {
           <p className="mt-8 max-w-xl text-xl leading-relaxed text-ink/75">Integro tecnología, datos y gestión para aportar valor a las organizaciones.</p>
           <p className="mt-5 max-w-xl leading-relaxed text-ink/70">Mi experiencia reúne análisis de datos y procesos, soporte TI, seguridad electrónica y tecnología aplicada a la industria.</p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <Link to="/projects" className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-foam transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-azul">Mi experiencia <ArrowRight size={17} /></Link>
-            <Link to="/proyectos" className="rounded-full border border-ink/25 bg-foam/35 px-6 py-3 backdrop-blur-sm transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-foam">Ver proyectos</Link>
+            <Magnetic><Link to="/projects" className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-foam transition-[background-color] hover:bg-azul">Mi experiencia <ArrowRight size={17} /></Link></Magnetic>
+            <Magnetic><Link to="/proyectos" className="cta-warm rounded-full px-6 py-3 font-medium">Ver proyectos</Link></Magnetic>
           </div>
         </div>
 
-        <aside className="night hero-focus-card rounded-2xl p-8 text-foam md:p-10" aria-label="Enfoque profesional">
+        <aside className="night hero-focus-card rounded-2xl border border-foam/15 p-8 text-foam md:p-10" aria-label="Enfoque profesional">
           <p className="label text-celeste">Tecnología con propósito</p>
-          <div className="my-10 font-display text-7xl font-medium" aria-hidden="true">RJ<span className="text-celeste">.</span></div>
+          <div className="my-10 font-display text-7xl font-medium" aria-hidden="true">RJ<span className="text-naranja-light">.</span></div>
           {focusAreas.map(({ icon: Icon, title, text }) => (
             <div key={title} className="flex gap-4 border-t border-foam/20 py-5">
               <Icon className="mt-1 shrink-0 text-celeste" size={22} />
