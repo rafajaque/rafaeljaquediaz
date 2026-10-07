@@ -36,8 +36,8 @@ function Certifications() {
               <h2 id={`issuer-${issuer.replace(/\W+/g, '-').toLowerCase()}`} className="font-display text-4xl md:text-5xl">{issuer}</h2>
               <p className="label text-azul">{items.length} {items.length === 1 ? 'certificación' : 'certificaciones'}</p>
             </div>
-            <ul className="grid gap-x-12 md:grid-cols-2">
-              {items.map(item => <li key={item.title} className="border-b border-ink/15 py-6">
+            <ul className="mt-5 grid gap-4 md:grid-cols-2">
+              {items.map(item => <li key={item.title} className="certificate-card rounded-2xl border border-ink/10 bg-foam/55 p-5 md:p-6">
                 <div className="flex justify-between gap-6">
                   <h3 className="text-lg leading-snug">{item.title}</h3>
                   <span className="label shrink-0 pt-1 text-azul">{item.hours.toLocaleString('es-CL')} {item.hours === 1 ? 'hora' : 'horas'}</span>

@@ -1,6 +1,8 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { SiteHeader } from '@/components/SiteHeader'
 import { SiteFooter } from '@/components/SiteFooter'
+import { PageTransition } from '@/components/PageTransition'
+import { ReadingProgress } from '@/components/ReadingProgress'
 import { site } from '@/data/site'
 
 import '../styles.css'
@@ -70,8 +72,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="grain">
+        <ReadingProgress />
         <SiteHeader />
-        <main className="site-canvas">{children}</main>
+        <main className="site-canvas"><PageTransition>{children}</PageTransition></main>
         <SiteFooter />
         <Scripts />
       </body>

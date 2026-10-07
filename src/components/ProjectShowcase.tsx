@@ -12,6 +12,7 @@ const visualConfig = {
 } as const
 
 type Project = (typeof githubProjects)[number]
+const technologyFilters = ['Todos', ...Array.from(new Set(githubProjects.map(project => project.technologies[0])))]
 
 function ProjectVisual({ project }: { project: Project }) {
   const config = visualConfig[project.visual]
@@ -36,15 +37,49 @@ function ProjectVisual({ project }: { project: Project }) {
 
 export function ProjectShowcase() {
   const [expandedProject, setExpandedProject] = useState<string | null>(null)
+  const [activeTechnology, setActiveTechnology] = useState('Todos')
+  const filteredProjects = activeTechnology === 'Todos'
+    ? githubProjects
+    : githubProjects.filter(project => project.technologies.includes(activeTechnology))
+
+  const selectTechnology = (technology: string) => {
+    setActiveTechnology(technology)
+    setExpandedProject(null)
+  }
 
   return (
-    <ol className="grid items-start gap-6 md:grid-cols-2">
-      {githubProjects.map((project, index) => {
+    <>
+      <div className="surface-elevated mb-8 rounded-3xl p-5 md:p-6">
+        <div className="flex flex-wrap items-end justify-between gap-3">
+          <div>
+            <p className="label text-azul">Explorar el portafolio</p>
+            <h2 className="mt-2 text-xl font-medium">Filtrar por tecnología principal</h2>
+          </div>
+          <p className="text-sm text-ink/65" aria-live="polite">{filteredProjects.length} {filteredProjects.length === 1 ? 'proyecto visible' : 'proyectos visibles'}</p>
+        </div>
+        <div className="mt-5 flex flex-wrap gap-2" role="group" aria-label="Filtrar proyectos por tecnología">
+          {technologyFilters.map(technology => (
+            <button
+              key={technology}
+              type="button"
+              className={`project-filter ${activeTechnology === technology ? 'is-active' : ''}`}
+              aria-pressed={activeTechnology === technology}
+              aria-controls="project-results"
+              onClick={() => selectTechnology(technology)}
+            >
+              {technology}
+            </button>
+          ))}
+        </div>
+      </div>
+
+    <ol id="project-results" className="grid items-start gap-6 md:grid-cols-2">
+      {filteredProjects.map((project, index) => {
         const expanded = expandedProject === project.id
         const detailsId = `project-details-${project.id}`
 
         return (
-          <li key={project.href} className={`transition-[grid-column] duration-500 ${expanded ? 'md:col-span-2' : ''}`}>
+          <li key={`${activeTechnology}-${project.href}`} className={`project-filter-item transition-[grid-column] duration-500 ${expanded ? 'md:col-span-2' : ''}`}>
             <Reveal delay={(index % 2) * 90} className="h-full">
               <article className={`project-card group overflow-hidden rounded-3xl border border-ink/15 bg-foam ${expanded ? 'is-expanded' : ''}`}>
                 <div className="project-preview relative overflow-hidden">
@@ -129,5 +164,6 @@ export function ProjectShowcase() {
         )
       })}
     </ol>
+    </>
   )
 }

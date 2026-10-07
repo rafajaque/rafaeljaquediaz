@@ -5,6 +5,7 @@ import { CertificationBadge } from '@/components/CertificationBadge'
 import { AnimatedCounter } from '@/components/AnimatedCounter'
 import { InteractiveHero } from '@/components/InteractiveHero'
 import { Reveal } from '@/components/Reveal'
+import { SkillBars } from '@/components/SkillBars'
 
 export const Route = createFileRoute('/')({ component: Home })
 
@@ -23,7 +24,8 @@ function Home() {
     <section className="mx-auto max-w-7xl px-6 py-24">
       <p className="label text-azul">Herramientas y conocimientos</p>
       <h2 className="display mt-4 text-5xl md:text-7xl">Mi base <em className="text-azul">técnica</em></h2>
-      <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">{skills.map(group => <div key={group.title} className="surface-elevated rounded-2xl p-6"><h3 className="text-xl font-medium">{group.title}</h3><ul className="mt-5 space-y-2 text-ink/75">{group.items.map(item => <li key={item}>{item}</li>)}</ul></div>)}</div>
+      <p className="mt-5 max-w-2xl text-ink/65">Las herramientas aparecen progresivamente al entrar en pantalla; las barras organizan el recorrido y no representan un porcentaje de dominio.</p>
+      <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">{skills.map(group => <SkillBars key={group.title} group={group} elevated />)}</div>
     </section>
     <section className="border-y border-ink/10 bg-gradient-to-br from-celeste-soft/55 via-paper to-naranja-soft/35">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-24 md:grid-cols-2">

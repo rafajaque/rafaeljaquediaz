@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, Code2, Database, Pause, Play, ShieldCheck } from 'lucide-react'
 import { AmbientBackdrop } from '@/components/AmbientBackdrop'
+import { Magnetic } from '@/components/Magnetic'
 
 const messages = [
   { lead: 'Transformo', accent: 'datos', end: 'en decisiones.' },
@@ -145,8 +146,8 @@ export function InteractiveHero() {
           <p className="mt-8 max-w-xl text-xl leading-relaxed text-ink/75">Integro tecnología, datos y gestión para aportar valor a las organizaciones.</p>
           <p className="mt-5 max-w-xl leading-relaxed text-ink/70">Mi experiencia reúne análisis de datos y procesos, soporte TI, seguridad electrónica y tecnología aplicada a la industria.</p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <Link to="/projects" className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-foam transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-azul">Mi experiencia <ArrowRight size={17} /></Link>
-            <Link to="/proyectos" className="cta-warm rounded-full px-6 py-3 font-medium">Ver proyectos</Link>
+            <Magnetic><Link to="/projects" className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-foam transition-[background-color] hover:bg-azul">Mi experiencia <ArrowRight size={17} /></Link></Magnetic>
+            <Magnetic><Link to="/proyectos" className="cta-warm rounded-full px-6 py-3 font-medium">Ver proyectos</Link></Magnetic>
           </div>
         </div>
 
