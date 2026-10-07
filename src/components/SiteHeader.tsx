@@ -20,7 +20,7 @@ export function SiteHeader() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
-      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-ink/10 bg-foam/75 py-2 pr-2 pl-5 shadow-[0_10px_40px_-20px_rgba(8,26,63,0.45)] backdrop-blur-xl">
+      <div className="header-glass mx-auto flex max-w-7xl items-center justify-between rounded-full border border-ink/10 bg-foam/75 py-2 pr-2 pl-5 backdrop-blur-xl">
         <Link to="/" className="group flex items-baseline gap-2">
           <span className="font-display text-2xl font-medium leading-none">{site.shortName}</span>
           <span className="label hidden text-azul sm:inline">/ TI</span>
@@ -68,4 +68,3 @@ export function SiteHeader() {
     </header>
   )
 }
-

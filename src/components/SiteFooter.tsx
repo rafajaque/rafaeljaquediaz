@@ -1,15 +1,17 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowUpRight } from 'lucide-react'
+import { AmbientBackdrop } from '@/components/AmbientBackdrop'
 import { site, socials } from '@/data/site'
 
 export function SiteFooter() {
   return (
-    <footer className="night relative overflow-hidden text-foam">
-      <div className="mx-auto max-w-7xl px-6 pt-14 pb-10">
+    <footer className="night site-footer depth-section relative overflow-hidden text-foam">
+      <AmbientBackdrop tone="dark" quiet />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-14 pb-10">
         <p className="label text-celeste">Conversemos sobre tecnología y nuevas oportunidades</p>
         <Link to="/contact" className="group mt-4 block">
-          <span className="display block text-[clamp(2rem,4vw,3.5rem)] transition-colors group-hover:text-celeste">
-            Hablemos <em className="text-celeste group-hover:text-foam">↗</em>
+          <span className="display block text-[clamp(2rem,4vw,3.5rem)] transition-colors group-hover:text-naranja-light">
+            Hablemos <em className="inline-block text-naranja-light transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">↗</em>
           </span>
         </Link>
 
@@ -33,4 +35,3 @@ export function SiteFooter() {
     </footer>
   )
 }
-

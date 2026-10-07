@@ -71,11 +71,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body className="grain">
         <SiteHeader />
-        <main>{children}</main>
+        <main className="site-canvas">{children}</main>
         <SiteFooter />
         <Scripts />
       </body>
     </html>
   )
 }
-

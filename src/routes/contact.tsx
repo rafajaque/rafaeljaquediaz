@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { ArrowUpRight, Check, Copy, Send } from 'lucide-react'
+import { AmbientBackdrop } from '@/components/AmbientBackdrop'
 import { site, socials } from '@/data/site'
 import { cn } from '@/lib/utils'
 
@@ -12,7 +13,7 @@ export const Route = createFileRoute('/contact')({
 const projectTypes = ['Oportunidad laboral', 'Proyecto tecnológico', 'Análisis de datos', 'Soporte TI', 'Otro']
 
 const field =
-  'w-full border-0 border-b border-ink/25 bg-transparent px-0 py-3 text-lg outline-none transition-colors placeholder:text-ink/35 focus:border-azul focus:ring-0'
+  'w-full border-0 border-b border-ink/50 bg-transparent px-0 py-3 text-lg outline-none transition-colors placeholder:text-ink/65 focus:border-azul focus:ring-0'
 
 function Chips({ name, options, value, onChange }: { name: string; options: string[]; value: string; onChange: (v: string) => void }) {
   return (
@@ -21,8 +22,8 @@ function Chips({ name, options, value, onChange }: { name: string; options: stri
         <label
           key={o}
           className={cn(
-            'cursor-pointer rounded-full border px-4 py-2 text-sm transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-azul',
-            value === o ? 'border-azul bg-azul text-foam' : 'border-ink/20 hover:border-ink',
+            'min-h-11 cursor-pointer rounded-full border px-4 py-2.5 text-sm transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-azul',
+            value === o ? 'border-naranja bg-naranja text-ink' : 'border-ink/40 bg-foam/35 hover:border-ink',
           )}
         >
           <input type="radio" name={name} value={o} checked={value === o} onChange={() => onChange(o)} className="sr-only" />
@@ -66,8 +67,9 @@ function Contact() {
   }
 
   return (
-    <section className="sky min-h-screen pt-36 pb-28 md:pt-44">
-      <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-12">
+    <section className="sky depth-section relative min-h-screen overflow-hidden pt-36 pb-28 md:pt-44">
+      <AmbientBackdrop quiet />
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-12">
         {/* Left: direct lines */}
         <div className="lg:col-span-5">
           <p className="label flex animate-rise gap-4 text-azul">
@@ -83,13 +85,13 @@ function Contact() {
           <button
             type="button"
             onClick={copyEmail}
-            className="group mt-10 flex w-full items-center justify-between gap-4 rounded-sm border border-ink/15 bg-foam/70 px-5 py-4 text-left backdrop-blur transition-colors hover:border-azul"
+            className="surface-elevated group mt-10 flex w-full items-center justify-between gap-4 rounded-2xl px-5 py-4 text-left transition-colors hover:border-azul"
           >
             <span>
-              <span className="label block text-ink/50">Email</span>
-              <span className="break-all font-display text-2xl font-medium">{site.email}</span>
+              <span className="label block text-ink/65">Email</span>
+              <span className="break-all font-display text-[clamp(1rem,4.5vw,1.5rem)] font-medium">{site.email}</span>
             </span>
-            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-ink text-foam transition-colors group-hover:bg-azul">
+            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-ink text-foam transition-colors group-hover:bg-naranja group-hover:text-ink">
               {copied ? <Check size={16} /> : <Copy size={16} />}
             </span>
           </button>
@@ -108,7 +110,7 @@ function Contact() {
                 >
                   <span className="text-lg font-medium">{s.label}</span>
                   <span className="flex items-center gap-3">
-                    <span className="label text-ink/50 group-hover:text-azul">{s.handle}</span>
+                    <span className="label text-ink/65 group-hover:text-azul">{s.handle}</span>
                     <ArrowUpRight size={18} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </span>
                 </a>
@@ -119,7 +121,7 @@ function Contact() {
 
         {/* Right: form */}
         <div className="lg:col-span-6 lg:col-start-7">
-          <div className="bg-foam p-8 shadow-[0_40px_80px_-40px_rgba(8,26,63,0.45)] md:p-12">
+          <div className="surface-elevated rounded-3xl p-8 md:p-12">
             {status === 'sent' ? (
               <div className="flex min-h-[32rem] flex-col items-start justify-center">
                 <span className="grid size-14 place-items-center rounded-full bg-azul text-foam">
@@ -145,23 +147,23 @@ function Contact() {
                 </p>
 
                 <div>
-                  <p className="label mb-4 text-ink/60">Motivo de contacto</p>
+                  <p className="label mb-4 text-ink/65">Motivo de contacto</p>
                   <Chips name="project-type" options={projectTypes} value={type} onChange={setType} />
                 </div>
 
                 <div className="grid gap-8 sm:grid-cols-2">
                   <label className="block">
-                    <span className="label text-ink/60">Tu nombre</span>
+                    <span className="label text-ink/65">Tu nombre</span>
                     <input type="text" name="name" required autoComplete="name" placeholder="Ana Pérez" className={field} />
                   </label>
                   <label className="block">
-                    <span className="label text-ink/60">Email</span>
+                    <span className="label text-ink/65">Email</span>
                     <input type="email" name="email" required autoComplete="email" placeholder="ana@empresa.com" className={field} />
                   </label>
                 </div>
 
 <label className="block">
-                  <span className="label text-ink/60">Tu mensaje</span>
+                  <span className="label text-ink/65">Tu mensaje</span>
                   <textarea name="message" required rows={5} placeholder="Cuéntame sobre la oportunidad o el proyecto…" className={cn(field, 'resize-none')} />
                 </label>
 
@@ -169,7 +171,7 @@ function Contact() {
                   <button
                     type="submit"
                     disabled={status === 'sending'}
-                    className="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-4 font-medium text-foam transition-colors hover:bg-azul disabled:opacity-60"
+                    className="cta-warm inline-flex items-center gap-2 rounded-full px-7 py-4 font-medium"
                   >
                     <Send size={16} />
                     {status === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
@@ -188,4 +190,3 @@ function Contact() {
     </section>
   )
 }
-

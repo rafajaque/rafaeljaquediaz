@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ArrowUpRight, BarChart3, BookOpen, Download, Github } from 'lucide-react'
 import { AnimatedCounter } from '@/components/AnimatedCounter'
 import { Reveal } from '@/components/Reveal'
+import { AmbientBackdrop } from '@/components/AmbientBackdrop'
 
 const repository = 'https://github.com/rafajaque/Investigaci-n-Colchagua-'
 
@@ -21,8 +22,9 @@ export function ColchaguaCaseStudy() {
   const sortedCommunes = [...communes].sort((a, b) => b[metric] - a[metric])
 
   return (
-    <section className="night overflow-hidden text-foam" aria-labelledby="colchagua-title">
-      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
+    <section className="night depth-section relative overflow-hidden text-foam" aria-labelledby="colchagua-title">
+      <AmbientBackdrop tone="dark" quiet />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:py-28">
         <Reveal className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <div>
             <p className="label text-celeste">Caso destacado · Business Intelligence</p>
@@ -53,8 +55,8 @@ export function ColchaguaCaseStudy() {
                 <h3 className="mt-3 text-2xl md:text-3xl">Comparación por comuna</h3>
               </div>
               <div className="flex rounded-full border border-foam/20 p-1" aria-label="Métrica del gráfico">
-                <button type="button" aria-pressed={isPriority} onClick={() => setMetric('priority')} className={`rounded-full px-4 py-2 text-xs font-medium transition-colors ${isPriority ? 'bg-celeste text-ink' : 'text-foam/70 hover:text-foam'}`}>Prioridad</button>
-                <button type="button" aria-pressed={!isPriority} onClick={() => setMetric('dependency')} className={`rounded-full px-4 py-2 text-xs font-medium transition-colors ${!isPriority ? 'bg-celeste text-ink' : 'text-foam/70 hover:text-foam'}`}>Dependencia agro</button>
+                <button type="button" aria-pressed={isPriority} onClick={() => setMetric('priority')} className={`rounded-full px-4 py-2 text-xs font-medium transition-colors ${isPriority ? 'bg-naranja text-ink' : 'text-foam/70 hover:text-foam'}`}>Prioridad</button>
+                <button type="button" aria-pressed={!isPriority} onClick={() => setMetric('dependency')} className={`rounded-full px-4 py-2 text-xs font-medium transition-colors ${!isPriority ? 'bg-naranja text-ink' : 'text-foam/70 hover:text-foam'}`}>Dependencia agro</button>
               </div>
             </div>
             <div className="mt-9 space-y-5" role="img" aria-label={isPriority ? 'Índice de prioridad por comuna' : 'Dependencia agrícola por comuna'}>
@@ -71,15 +73,15 @@ export function ColchaguaCaseStudy() {
             <p className="mt-8 border-t border-foam/15 pt-5 text-sm leading-relaxed text-foam/55">El índice combina exposición agrícola, dependencia productiva, riego y mercado con pesos explícitos. Sirve para priorizar diagnósticos; no representa una probabilidad de pérdida ni demuestra causalidad.</p>
           </Reveal>
 
-          <Reveal delay={120} className="flex flex-col rounded-2xl bg-celeste-soft p-7 text-ink md:p-9">
+          <Reveal delay={120} className="accent-rail-top flex flex-col rounded-2xl bg-celeste-soft p-7 text-ink shadow-[0_30px_76px_-46px_rgba(8,26,63,0.7)] md:p-9">
             <p className="label text-azul">Conclusión para la decisión</p>
             <h3 className="mt-4 font-display text-4xl">Chimbarongo y Placilla son prioridades robustas.</h3>
             <p className="mt-5 leading-relaxed text-ink/70">Ambas comunas aparecen entre las tres primeras en los cinco escenarios de sensibilidad. El tercer cupo depende del objetivo del programa, por lo que la recomendación es iniciar un diagnóstico de riego y continuidad de proveedores antes de asignar intervenciones.</p>
             <div className="mt-7 grid grid-cols-2 gap-3 border-y border-ink/15 py-6">
-              <div><span className="block font-display text-3xl">0,379</span><span className="text-xs text-ink/60">Silhouette, k=2</span></div>
-              <div><span className="block font-display text-3xl">5.000</span><span className="text-xs text-ink/60">Simulaciones forecast</span></div>
+              <div><span className="block font-display text-3xl">0,379</span><span className="text-xs text-ink/65">Silhouette, k=2</span></div>
+              <div><span className="block font-display text-3xl">5.000</span><span className="text-xs text-ink/65">Simulaciones forecast</span></div>
             </div>
-            <p className="mt-6 text-sm leading-relaxed text-ink/60">La evidencia es correlacional y exploratoria: dos estaciones meteorológicas y empleo regional no permiten atribuir causalidad ni identificar empresas individuales vulnerables.</p>
+            <p className="mt-6 text-sm leading-relaxed text-ink/65">La evidencia es correlacional y exploratoria: dos estaciones meteorológicas y empleo regional no permiten atribuir causalidad ni identificar empresas individuales vulnerables.</p>
           </Reveal>
         </div>
 
@@ -87,10 +89,9 @@ export function ColchaguaCaseStudy() {
           <a href={`${repository}/blob/main/Colchagua_Resiliencia.ipynb`} target="_blank" rel="noopener noreferrer" className="artifact-link"><BookOpen size={19} /> Notebook ejecutado <ArrowUpRight size={16} /></a>
           <a href={`${repository}/raw/refs/heads/main/Colchagua_Resiliencia.pbix`} className="artifact-link"><BarChart3 size={19} /> Descargar Power BI <Download size={16} /></a>
           <a href={`${repository}/blob/main/Informe_Colchagua.pdf`} target="_blank" rel="noopener noreferrer" className="artifact-link"><BookOpen size={19} /> Informe técnico <ArrowUpRight size={16} /></a>
-          <a href={repository} target="_blank" rel="noopener noreferrer" className="artifact-link"><Github size={19} /> Código y datos <ArrowUpRight size={16} /></a>
+          <a href={repository} target="_blank" rel="noopener noreferrer" className="artifact-link artifact-link--accent"><Github size={19} /> Código y datos <ArrowUpRight size={16} /></a>
         </Reveal>
       </div>
     </section>
   )
 }
-

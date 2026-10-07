@@ -71,7 +71,7 @@ export function ProjectShowcase() {
                   <dl className="mt-7 grid gap-px overflow-hidden rounded-2xl bg-ink/10 sm:grid-cols-2">
                     {project.highlights.map(highlight => (
                       <div key={highlight.label} className="bg-paper/85 px-5 py-4">
-                        <dt className="text-xs text-ink/55">{highlight.label}</dt>
+                        <dt className="text-xs text-ink/65">{highlight.label}</dt>
                         <dd className="mt-1 font-display text-2xl text-azul">{highlight.value}</dd>
                       </div>
                     ))}
@@ -83,7 +83,7 @@ export function ProjectShowcase() {
                       onClick={() => setExpandedProject(expanded ? null : project.id)}
                       aria-expanded={expanded}
                       aria-controls={detailsId}
-                      className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-foam transition-[transform,background-color] hover:-translate-y-0.5 hover:bg-azul"
+                      className="cta-warm inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium"
                     >
                       {expanded ? 'Cerrar detalles' : 'Ver el proyecto'}
                       <ArrowDown size={16} className={`transition-transform duration-500 ${expanded ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -116,9 +116,9 @@ export function ProjectShowcase() {
                         {project.technologies.map(technology => <span key={technology} className="rounded-full bg-celeste-soft/65 px-3 py-1.5 text-xs font-medium text-ink/75">{technology}</span>)}
                       </div>
 
-                      <div className="mt-7 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-celeste-soft/45 p-5">
+                      <div className="mt-7 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-naranja-soft/55 p-5">
                         <div><span className="label text-azul">Estado</span><p className="mt-1 text-sm text-ink/70">{project.status}</p></div>
-                        {project.caseStudyHref && <a href={project.caseStudyHref} className="inline-flex items-center gap-2 font-medium text-azul">Explorar caso interactivo <ArrowUpRight size={16} /></a>}
+                        {project.caseStudyHref && <a href={project.caseStudyHref} className="cta-warm-link inline-flex items-center gap-2 font-medium">Explorar caso interactivo <ArrowUpRight size={16} /></a>}
                       </div>
                     </div>
                   </div>
