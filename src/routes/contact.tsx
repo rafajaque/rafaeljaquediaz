@@ -4,9 +4,15 @@ import { ArrowUpRight, Check, Copy, Send } from 'lucide-react'
 import { AmbientBackdrop } from '@/components/AmbientBackdrop'
 import { site, socials } from '@/data/site'
 import { cn } from '@/lib/utils'
+import { buildSeo } from '@/lib/seo'
 
 export const Route = createFileRoute('/contact')({
-  head: () => ({ meta: [{ title: `Contacto — ${site.name}` }] }),
+  head: () =>
+    buildSeo({
+      title: `Contacto — ${site.name}`,
+      description: 'Contacto profesional con Rafael Andrés Jaque Díaz para oportunidades laborales, proyectos tecnológicos, datos y soporte TI.',
+      path: '/contact',
+    }),
   component: Contact,
 })
 
@@ -99,7 +105,15 @@ function Contact() {
             {copied ? 'Correo copiado' : ''}
           </p>
 
-          <div className="mt-6 space-y-3"><a href={`mailto:${site.email}`} className="block text-azul underline">Enviar correo directamente</a><a href={site.phoneHref} className="block text-lg">{site.phone}</a></div><ul className="mt-8">
+          <div className="mt-6 space-y-3">
+            <a href={`mailto:${site.email}`} className="block text-azul underline">
+              Enviar correo directamente
+            </a>
+            <a href={site.phoneHref} className="block text-lg">
+              {site.phone}
+            </a>
+          </div>
+          <ul className="mt-8">
             {socials.map((s) => (
               <li key={s.label}>
                 <a
@@ -130,9 +144,7 @@ function Contact() {
                 <h2 className="display mt-8 text-6xl">
                   Mensaje <em className="text-azul">recibido</em>.
                 </h2>
-                <p className="mt-4 max-w-sm text-lg text-ink/70">
-                  Gracias por escribirme. Me pondré en contacto contigo.
-                </p>
+                <p className="mt-4 max-w-sm text-lg text-ink/70">Gracias por escribirme. Me pondré en contacto contigo.</p>
                 <button type="button" onClick={() => setStatus('idle')} className="label link-underline mt-10 text-azul">
                   Enviar otro →
                 </button>
@@ -162,17 +174,13 @@ function Contact() {
                   </label>
                 </div>
 
-<label className="block">
+                <label className="block">
                   <span className="label text-ink/65">Tu mensaje</span>
                   <textarea name="message" required rows={5} placeholder="Cuéntame sobre la oportunidad o el proyecto…" className={cn(field, 'resize-none')} />
                 </label>
 
                 <div className="flex flex-wrap items-center gap-4">
-                  <button
-                    type="submit"
-                    disabled={status === 'sending'}
-                    className="cta-warm inline-flex items-center gap-2 rounded-full px-7 py-4 font-medium"
-                  >
+                  <button type="submit" disabled={status === 'sending'} className="cta-warm inline-flex items-center gap-2 rounded-full px-7 py-4 font-medium">
                     <Send size={16} />
                     {status === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
                   </button>
@@ -182,6 +190,10 @@ function Contact() {
                     </p>
                   )}
                 </div>
+                <p className="text-sm leading-relaxed text-ink/65">
+                  Usaré tu nombre, correo, motivo de contacto y mensaje únicamente para responder esta consulta. No se utilizarán para publicidad ni se
+                  compartirán con terceros con fines comerciales.
+                </p>
               </form>
             )}
           </div>

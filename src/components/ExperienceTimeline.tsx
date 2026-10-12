@@ -29,35 +29,42 @@ export function ExperienceTimeline() {
     }
 
     const entries = Array.from(timeline.querySelectorAll<HTMLElement>('[data-timeline-entry]'))
-    const observer = new IntersectionObserver((observedEntries) => {
-      observedEntries.forEach((entry) => {
-        if (!entry.isIntersecting) return
-        const index = Number((entry.target as HTMLElement).dataset.timelineEntry)
-        setActiveItems(current => {
-          if (current.has(index)) return current
-          const next = new Set(current)
-          next.add(index)
-          return next
+    const observer = new IntersectionObserver(
+      (observedEntries) => {
+        observedEntries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          const index = Number((entry.target as HTMLElement).dataset.timelineEntry)
+          setActiveItems((current) => {
+            if (current.has(index)) return current
+            const next = new Set(current)
+            next.add(index)
+            return next
+          })
+          observer.unobserve(entry.target)
         })
-        observer.unobserve(entry.target)
-      })
-    }, { rootMargin: '-15% 0px -28% 0px', threshold: 0.18 })
+      },
+      { rootMargin: '-15% 0px -28% 0px', threshold: 0.18 },
+    )
 
     const activatePassedEntries = () => {
       const passedIndexes = entries
-        .filter(entry => entry.getBoundingClientRect().top <= window.innerHeight * 0.78)
-        .map(entry => Number(entry.dataset.timelineEntry))
+        .filter((entry) => entry.getBoundingClientRect().top <= window.innerHeight * 0.78)
+        .map((entry) => Number(entry.dataset.timelineEntry))
 
       if (!passedIndexes.length) return
-      setActiveItems(current => {
+      setActiveItems((current) => {
         const next = new Set(current)
-        passedIndexes.forEach(index => next.add(index))
+        passedIndexes.forEach((index) => {
+          next.add(index)
+        })
         return next.size === current.size ? current : next
       })
     }
 
     activatePassedEntries()
-    entries.forEach(entry => observer.observe(entry))
+    entries.forEach((entry) => {
+      observer.observe(entry)
+    })
 
     let frame = 0
     const updateProgress = () => {
@@ -87,32 +94,32 @@ export function ExperienceTimeline() {
   }, [reducedMotion])
 
   return (
-    <ol
-      ref={timelineRef}
-      className="experience-timeline"
-      data-enhanced={enhanced ? 'true' : undefined}
-      style={{ '--timeline-progress': '0' } as CSSProperties}
-    >
+    <ol ref={timelineRef} className="experience-timeline" data-enhanced={enhanced ? 'true' : undefined} style={{ '--timeline-progress': '0' } as CSSProperties}>
       {experience.map((item, index) => {
         const active = activeItems.has(index)
         return (
-          <li
-            key={`${item.company}-${item.period}`}
-            data-timeline-entry={index}
-            className={`experience-timeline-entry ${active ? 'is-active' : ''}`}
-          >
-            <span className="experience-timeline-dot" aria-hidden="true"><BriefcaseBusiness size={15} /></span>
+          <li key={`${item.company}-${item.period}`} data-timeline-entry={index} className={`experience-timeline-entry ${active ? 'is-active' : ''}`}>
+            <span className="experience-timeline-dot" aria-hidden="true">
+              <BriefcaseBusiness size={15} />
+            </span>
 
             <div className="experience-timeline-meta">
               <p className="font-medium text-ink/75">{item.period}</p>
-              {item.duration && <p className="mt-2 inline-flex items-center gap-2 text-sm text-ink/65"><Clock3 size={14} aria-hidden="true" />{item.duration}</p>}
+              {item.duration && (
+                <p className="mt-2 inline-flex items-center gap-2 text-sm text-ink/65">
+                  <Clock3 size={14} aria-hidden="true" />
+                  {item.duration}
+                </p>
+              )}
             </div>
 
             <article className="experience-timeline-card" aria-labelledby={`experience-${index}-title`}>
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <p className="label text-azul">{item.company}</p>
-                  <h2 id={`experience-${index}-title`} className="mt-3 font-display text-3xl md:text-4xl">{item.role}</h2>
+                  <h2 id={`experience-${index}-title`} className="mt-3 font-display text-3xl md:text-4xl">
+                    {item.role}
+                  </h2>
                 </div>
                 <span className="rounded-full border border-ink/15 bg-paper/70 px-3 py-1.5 text-xs font-medium text-ink/65">{item.employment}</span>
               </div>
@@ -124,11 +131,7 @@ export function ExperienceTimeline() {
 
               <ul className="mt-7 flex flex-wrap gap-2" aria-label={`Tecnologías y competencias en ${item.company}`}>
                 {item.areas.map((area, areaIndex) => (
-                  <li
-                    key={area}
-                    className="experience-timeline-tag"
-                    style={{ '--tag-delay': `${140 + areaIndex * 85}ms` } as CSSProperties}
-                  >
+                  <li key={area} className="experience-timeline-tag" style={{ '--tag-delay': `${140 + areaIndex * 85}ms` } as CSSProperties}>
                     {area}
                   </li>
                 ))}

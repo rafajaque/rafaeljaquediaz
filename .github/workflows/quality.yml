@@ -10,7 +10,8 @@ permissions:
   contents: read
 
 jobs:
-  validate:
+  quality:
+    name: Formato, código y compilación
     runs-on: ubuntu-latest
     steps:
       - name: Descargar repositorio
@@ -19,7 +20,7 @@ jobs:
       - name: Configurar pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: 10.28.0
 
       - name: Configurar Node.js
         uses: actions/setup-node@v4
@@ -30,9 +31,56 @@ jobs:
       - name: Instalar dependencias
         run: pnpm install --frozen-lockfile
 
-      - name: Compilar para producción
-        run: pnpm build
+      - name: Verificar formato
+        run: pnpm format:check
+
+      - name: Ejecutar lint
+        run: pnpm lint
+
+      - name: Ejecutar pruebas unitarias y de integridad
+        run: pnpm test
 
       - name: Verificar TypeScript
         run: pnpm typecheck
 
+      - name: Compilar para producción
+        run: pnpm build
+
+      - name: Auditar dependencias de producción
+        run: pnpm audit --prod --audit-level high
+
+  browser:
+    name: Navegador y accesibilidad
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.28.0
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+
+      - name: Instalar Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Ejecutar pruebas de navegador y axe
+        run: pnpm test:e2e
+
+      - name: Guardar informe de Playwright cuando falle
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: informe-playwright
+          path: playwright-report/
+          retention-days: 7

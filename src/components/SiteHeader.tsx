@@ -1,5 +1,5 @@
-import { Link, useRouterState } from '@tanstack/react-router'
-import { useEffect, useState } from 'react'
+import { Link } from '@tanstack/react-router'
+import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { site } from '@/data/site'
 import { cn } from '@/lib/utils'
@@ -14,9 +14,6 @@ export const navItems = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
-  const pathname = useRouterState({ select: (s) => s.location.pathname })
-
-  useEffect(() => setOpen(false), [pathname])
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6">
@@ -43,6 +40,7 @@ export function SiteHeader() {
           type="button"
           onClick={() => setOpen((o) => !o)}
           className="grid size-10 place-items-center rounded-full bg-ink text-foam md:hidden"
+          aria-controls="mobile-navigation"
           aria-expanded={open}
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
         >
@@ -51,6 +49,9 @@ export function SiteHeader() {
       </div>
 
       <div
+        id="mobile-navigation"
+        aria-hidden={!open}
+        inert={!open}
         className={cn(
           'night fixed inset-0 -z-10 flex flex-col justify-end px-6 pb-12 text-foam transition-[opacity,visibility] duration-500 md:hidden',
           open ? 'visible opacity-100' : 'invisible opacity-0',
@@ -58,7 +59,7 @@ export function SiteHeader() {
       >
         <nav className="flex flex-col gap-2" aria-label="Móvil">
           {navItems.map((item) => (
-            <Link key={item.to} to={item.to} className="flex items-baseline gap-4 border-b border-foam/15 py-3">
+            <Link key={item.to} to={item.to} onClick={() => setOpen(false)} className="flex items-baseline gap-4 border-b border-foam/15 py-3">
               <span className="display text-[clamp(2rem,7.8vw,3.75rem)]">{item.label}</span>
             </Link>
           ))}

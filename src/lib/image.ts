@@ -12,7 +12,5 @@ export function cdn(src: string, width: number, height?: number, quality = 72) {
 }
 
 export function srcSet(src: string, widths: number[], ratio?: number) {
-  return widths
-    .map((w) => `${cdn(src, w, ratio ? Math.round(w / ratio) : undefined)} ${w}w`)
-    .join(', ')
+  return widths.map((w) => `${cdn(src, w, ratio ? Math.round(w / ratio) : undefined)} ${w}w`).join(', ')
 }

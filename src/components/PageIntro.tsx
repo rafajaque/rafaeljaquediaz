@@ -11,9 +11,7 @@ export function PageIntro({ eyebrow, title, children }: { eyebrow: string; title
           <span>{eyebrow}</span>
         </p>
         <h1 className="display mt-6 animate-rise text-[clamp(1.9rem,5.5vw,5.5rem)] [animation-delay:100ms]">{title}</h1>
-        {children && (
-          <div className="mt-8 max-w-xl animate-rise text-lg leading-relaxed text-ink/75 [animation-delay:200ms]">{children}</div>
-        )}
+        {children && <div className="mt-8 max-w-xl animate-rise text-lg leading-relaxed text-ink/75 [animation-delay:200ms]">{children}</div>}
       </div>
     </section>
   )

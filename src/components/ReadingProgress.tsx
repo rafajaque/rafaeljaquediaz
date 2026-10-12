@@ -3,9 +3,10 @@ import { useRouterState } from '@tanstack/react-router'
 
 export function ReadingProgress() {
   const barRef = useRef<HTMLSpanElement>(null)
-  const pathname = useRouterState({ select: state => state.location.pathname })
+  const pathname = useRouterState({ select: (state) => state.location.pathname })
 
   useEffect(() => {
+    void pathname
     const bar = barRef.current
     if (!bar) return
 

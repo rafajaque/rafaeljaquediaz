@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Portafolio de Rafael Andrés Jaque Díaz</title>
+  <desc id="description">Ingeniería informática, gestión de proyectos tecnológicos y decisiones basadas en datos.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eaf6fd"/>
+      <stop offset="1" stop-color="#c9e8f8"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.18" r="0.7">
+      <stop offset="0" stop-color="#ff9f43" stop-opacity="0.48"/>
+      <stop offset="1" stop-color="#ff9f43" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <circle cx="1050" cy="110" r="190" fill="none" stroke="#087bb7" stroke-opacity="0.18" stroke-width="2"/>
+  <circle cx="1050" cy="110" r="128" fill="none" stroke="#087bb7" stroke-opacity="0.24" stroke-width="2"/>
+  <path d="M0 520C260 430 390 590 650 490S990 410 1200 500V630H0Z" fill="#09263a"/>
+  <rect x="72" y="70" width="148" height="44" rx="22" fill="#087bb7"/>
+  <text x="146" y="99" fill="#ffffff" font-family="Arial, sans-serif" font-size="19" font-weight="700" text-anchor="middle" letter-spacing="2">PORTAFOLIO</text>
+  <text x="72" y="210" fill="#09263a" font-family="Arial, sans-serif" font-size="68" font-weight="700">Rafael Andrés</text>
+  <text x="72" y="286" fill="#087bb7" font-family="Arial, sans-serif" font-size="68" font-weight="700">Jaque Díaz</text>
+  <text x="72" y="354" fill="#24485e" font-family="Arial, sans-serif" font-size="29">Ingeniero Informático · Gestor de Proyectos Tecnológicos</text>
+  <text x="72" y="411" fill="#24485e" font-family="Arial, sans-serif" font-size="24">Tecnología, datos y gestión para aportar valor.</text>
+  <text x="72" y="574" fill="#dff4ff" font-family="Arial, sans-serif" font-size="22">rafaeljaquediaz.netlify.app</text>
+  <text x="1060" y="558" fill="#ffffff" font-family="Arial, sans-serif" font-size="78" font-weight="700" text-anchor="middle">RJ<tspan fill="#ff9f43">.</tspan></text>
+</svg>

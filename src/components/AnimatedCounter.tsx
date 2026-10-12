@@ -22,20 +22,23 @@ export function AnimatedCounter({ value, suffix = '', decimals = 0, duration = 1
     }
 
     let animationFrame = 0
-    const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return
-      observer.disconnect()
-      const startedAt = performance.now()
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        observer.disconnect()
+        const startedAt = performance.now()
 
-      const animate = (now: number) => {
-        const progress = Math.min((now - startedAt) / duration, 1)
-        const eased = 1 - Math.pow(1 - progress, 3)
-        setDisplayValue(value * eased)
-        if (progress < 1) animationFrame = requestAnimationFrame(animate)
-      }
+        const animate = (now: number) => {
+          const progress = Math.min((now - startedAt) / duration, 1)
+          const eased = 1 - (1 - progress) ** 3
+          setDisplayValue(value * eased)
+          if (progress < 1) animationFrame = requestAnimationFrame(animate)
+        }
 
-      animationFrame = requestAnimationFrame(animate)
-    }, { threshold: 0.45 })
+        animationFrame = requestAnimationFrame(animate)
+      },
+      { threshold: 0.45 },
+    )
 
     observer.observe(element)
     return () => {
@@ -45,9 +48,12 @@ export function AnimatedCounter({ value, suffix = '', decimals = 0, duration = 1
   }, [duration, value])
 
   return (
-    <span ref={ref} aria-label={`${value.toLocaleString('es-CL')} ${suffix}`.trim()}>
-      {displayValue.toLocaleString('es-CL', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}{suffix}
+    <span ref={ref}>
+      <span className="sr-only">{`${value.toLocaleString('es-CL')} ${suffix}`.trim()}</span>
+      <span aria-hidden="true">
+        {displayValue.toLocaleString('es-CL', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}
+        {suffix}
+      </span>
     </span>
   )
 }
-
