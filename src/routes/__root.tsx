@@ -3,12 +3,37 @@ import { SiteHeader } from '@/components/SiteHeader'
 import { SiteFooter } from '@/components/SiteFooter'
 import { PageTransition } from '@/components/PageTransition'
 import { ReadingProgress } from '@/components/ReadingProgress'
-import { site } from '@/data/site'
+import { HydrationStatus } from '@/components/HydrationStatus'
+import { site, socials } from '@/data/site'
+import { siteUrl } from '@/lib/seo'
 
 import '../styles.css'
 
-const siteName = `${site.name} — ${site.role}`
-const siteDescription = site.description
+const profileSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ProfilePage',
+      '@id': `${siteUrl}#perfil`,
+      url: siteUrl,
+      name: `${site.name} — ${site.role}`,
+      mainEntity: { '@id': `${siteUrl}#rafael-jaque` },
+    },
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}#rafael-jaque`,
+      name: site.name,
+      url: siteUrl,
+      description: site.description,
+      jobTitle: site.role,
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'CL',
+      },
+      sameAs: socials.map((social) => social.href),
+    },
+  ],
+}
 
 export const Route = createRootRoute({
   head: () => ({
@@ -21,35 +46,8 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: siteName,
-      },
-      {
-        name: 'description',
-        content: siteDescription,
-      },
-      {
         name: 'theme-color',
         content: '#eef7fd',
-      },
-      {
-        property: 'og:title',
-        content: siteName,
-      },
-      {
-        property: 'og:description',
-        content: siteDescription,
-      },
-      {
-        property: 'og:image',
-        content: '/img/google-data-driven-decision-making.png',
-      },
-      {
-        property: 'og:type',
-        content: 'website',
-      },
-      {
-        name: 'twitter:card',
-        content: 'summary_large_image',
       },
     ],
     links: [
@@ -70,11 +68,18 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="es">
       <head>
         <HeadContent />
+        <script type="application/ld+json">{JSON.stringify(profileSchema)}</script>
       </head>
       <body className="grain">
+        <HydrationStatus />
+        <a href="#contenido-principal" className="skip-link">
+          Saltar al contenido
+        </a>
         <ReadingProgress />
         <SiteHeader />
-        <main className="site-canvas"><PageTransition>{children}</PageTransition></main>
+        <main id="contenido-principal" className="site-canvas" tabIndex={-1}>
+          <PageTransition>{children}</PageTransition>
+        </main>
         <SiteFooter />
         <Scripts />
       </body>

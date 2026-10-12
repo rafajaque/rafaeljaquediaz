@@ -19,7 +19,12 @@ export function SiteFooter() {
           <ul className="flex flex-wrap gap-x-8 gap-y-3">
             {socials.map((s) => (
               <li key={s.label}>
-                <a href={s.href} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-1 text-sm text-foam/80 hover:text-celeste">
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-1 text-sm text-foam/80 hover:text-celeste"
+                >
                   {s.label}
                   <ArrowUpRight size={14} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </a>
@@ -28,7 +33,9 @@ export function SiteFooter() {
           </ul>
           <div className="label flex flex-wrap gap-6 text-foam/50">
             <span>{site.location}</span>
-            <span>© {new Date().getFullYear()} {site.name}</span>
+            <span>
+              © {new Date().getFullYear()} {site.name}
+            </span>
           </div>
         </div>
       </div>

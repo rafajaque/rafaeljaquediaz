@@ -54,7 +54,7 @@ export function InteractiveHero() {
       stopRotation()
       if (document.hidden) return
       intervalId = window.setInterval(() => {
-        setActiveMessage(current => (current + 1) % messages.length)
+        setActiveMessage((current) => (current + 1) % messages.length)
       }, 3400)
     }
 
@@ -95,12 +95,14 @@ export function InteractiveHero() {
       className="sky hero-interactive depth-section relative overflow-hidden pt-36 pb-20 md:pt-44"
       onPointerMove={handlePointerMove}
       onPointerLeave={resetPointer}
-      style={{
-        '--hero-pointer-x': '72%',
-        '--hero-pointer-y': '32%',
-        '--hero-tilt-x': '0deg',
-        '--hero-tilt-y': '0deg',
-      } as CSSProperties}
+      style={
+        {
+          '--hero-pointer-x': '72%',
+          '--hero-pointer-y': '32%',
+          '--hero-tilt-x': '0deg',
+          '--hero-tilt-y': '0deg',
+        } as CSSProperties
+      }
     >
       <AmbientBackdrop />
       <div className="hero-pointer-glow" aria-hidden="true" />
@@ -112,13 +114,16 @@ export function InteractiveHero() {
             <span className="hero-phrase-stage" aria-hidden="true">
               {messages.map((message, index) => (
                 <span key={message.end} className={`hero-phrase ${index === activeMessage ? 'is-active' : ''}`}>
-                  {message.lead} <em className="text-azul">{message.accent}</em><br />{message.end}
+                  {message.lead} <em className="text-azul">{message.accent}</em>
+                  <br />
+                  {message.end}
                 </span>
               ))}
             </span>
           </h1>
 
-          <div className="mt-6 flex items-center gap-2" aria-label="Control de mensajes destacados">
+          <fieldset className="mt-6 flex items-center gap-2">
+            <legend className="sr-only">Control de mensajes destacados</legend>
             {messages.map((message, index) => (
               <button
                 key={message.end}
@@ -132,7 +137,7 @@ export function InteractiveHero() {
             {!reducedMotion && (
               <button
                 type="button"
-                onClick={() => setPaused(current => !current)}
+                onClick={() => setPaused((current) => !current)}
                 className="ml-2 inline-flex h-9 items-center gap-2 rounded-full border border-ink/15 bg-foam/55 px-3 text-xs font-medium text-ink/65 backdrop-blur-sm transition-colors hover:border-azul/40 hover:text-azul"
                 aria-label={paused ? 'Reanudar cambio automático de mensajes' : 'Pausar cambio automático de mensajes'}
                 aria-pressed={paused}
@@ -141,23 +146,41 @@ export function InteractiveHero() {
                 {paused ? 'Reanudar' : 'Pausar'}
               </button>
             )}
-          </div>
+          </fieldset>
 
           <p className="mt-8 max-w-xl text-xl leading-relaxed text-ink/75">Integro tecnología, datos y gestión para aportar valor a las organizaciones.</p>
-          <p className="mt-5 max-w-xl leading-relaxed text-ink/70">Mi experiencia reúne análisis de datos y procesos, soporte TI, seguridad electrónica y tecnología aplicada a la industria.</p>
+          <p className="mt-5 max-w-xl leading-relaxed text-ink/70">
+            Mi experiencia reúne análisis de datos y procesos, soporte TI, seguridad electrónica y tecnología aplicada a la industria.
+          </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <Magnetic><Link to="/projects" className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-foam transition-[background-color] hover:bg-azul">Mi experiencia <ArrowRight size={17} /></Link></Magnetic>
-            <Magnetic><Link to="/proyectos" className="cta-warm rounded-full px-6 py-3 font-medium">Ver proyectos</Link></Magnetic>
+            <Magnetic>
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-foam transition-[background-color] hover:bg-azul"
+              >
+                Mi experiencia <ArrowRight size={17} />
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <Link to="/proyectos" className="cta-warm rounded-full px-6 py-3 font-medium">
+                Ver proyectos
+              </Link>
+            </Magnetic>
           </div>
         </div>
 
         <aside className="night hero-focus-card rounded-2xl border border-foam/15 p-8 text-foam md:p-10" aria-label="Enfoque profesional">
           <p className="label text-celeste">Tecnología con propósito</p>
-          <div className="my-10 font-display text-7xl font-medium" aria-hidden="true">RJ<span className="text-naranja-light">.</span></div>
+          <div className="my-10 font-display text-7xl font-medium" aria-hidden="true">
+            RJ<span className="text-naranja-light">.</span>
+          </div>
           {focusAreas.map(({ icon: Icon, title, text }) => (
             <div key={title} className="flex gap-4 border-t border-foam/20 py-5">
               <Icon className="mt-1 shrink-0 text-celeste" size={22} />
-              <div><h2 className="text-lg font-medium">{title}</h2><p className="mt-1 text-foam/70">{text}</p></div>
+              <div>
+                <h2 className="text-lg font-medium">{title}</h2>
+                <p className="mt-1 text-foam/70">{text}</p>
+              </div>
             </div>
           ))}
         </aside>

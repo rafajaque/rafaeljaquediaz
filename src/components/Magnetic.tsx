@@ -53,13 +53,7 @@ export function Magnetic({ children }: { children: ReactNode }) {
   }
 
   return (
-    <span
-      ref={surfaceRef}
-      className="magnetic-surface"
-      onPointerMove={handlePointerMove}
-      onPointerLeave={reset}
-      onPointerCancel={reset}
-    >
+    <span ref={surfaceRef} className="magnetic-surface" onPointerMove={handlePointerMove} onPointerLeave={reset} onPointerCancel={reset}>
       {children}
     </span>
   )
