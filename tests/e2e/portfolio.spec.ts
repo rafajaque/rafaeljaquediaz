@@ -21,6 +21,22 @@ for (const route of routes) {
   })
 }
 
+test('las respuestas SSR incluyen los headers de seguridad', async ({ page }) => {
+  const response = await page.goto('/')
+
+  expect(response).not.toBeNull()
+  if (!response) throw new Error('La navegación SSR no devolvió una respuesta HTTP')
+  const headers = response.headers()
+
+  expect(headers['content-security-policy']).toContain("frame-ancestors 'none'")
+  expect(headers['cross-origin-opener-policy']).toBe('same-origin-allow-popups')
+  expect(headers['permissions-policy']).toBe('camera=(), geolocation=(), microphone=(), payment=(), usb=()')
+  expect(headers['referrer-policy']).toBe('strict-origin-when-cross-origin')
+  expect(headers['strict-transport-security']).toBe('max-age=31536000; includeSubDomains')
+  expect(headers['x-content-type-options']).toBe('nosniff')
+  expect(headers['x-frame-options']).toBe('DENY')
+})
+
 test('el enlace de salto lleva el foco al contenido principal', async ({ page }) => {
   await page.goto('/')
   await page.keyboard.press('Tab')
