@@ -10,7 +10,7 @@ export const site = {
   description:
     'Ingeniero Informático y Gestor de Proyectos Tecnológicos enfocado en integración de sistemas, seguridad integral y decisiones basadas en datos.',
   profile:
-    'Soy Gestor de Proyectos Tecnológicos e Ingeniero Informático, enfocado en crear valor a través de la integración de sistemas y la seguridad integral. Analizo problemas complejos desde una perspectiva multidisciplinaria para implementar soluciones que incrementen la productividad organizacional. Mi enfoque combina gestión estratégica, trabajo ágil y decisiones basadas en datos.',
+    'Soy Gestor de Proyectos Tecnológicos e Ingeniero Informático, enfocado en crear valor a través de la integración de sistemas y la seguridad integral. Analizo problemas complejos desde una perspectiva multidisciplinaria para implementar soluciones que incrementen la productividad organizacional. Mi enfoque combina gestión estratégica, trabajo ágil y decisiones basadas en datos_-.',
 }
 export const socials = [
   { label: 'GitHub', handle: '@rafajaque', href: 'https://github.com/rafajaque' },
