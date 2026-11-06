@@ -46,6 +46,18 @@ test('el enlace de salto lleva el foco al contenido principal', async ({ page })
   await expect(page.locator('#contenido-principal')).toBeFocused()
 })
 
+test('el contenido esencial sigue disponible sin JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false })
+  const page = await context.newPage()
+
+  await page.goto('/')
+  await expect(page.getByRole('heading', { name: /Integro tecnología, datos y gestión/i })).toBeVisible()
+  await expect(page.getByRole('heading', { name: /resiliencia agrícola en Colchagua/i })).toBeVisible()
+  await expect(page.getByText(/Herramientas y conocimientos/i)).toBeVisible()
+
+  await context.close()
+})
+
 test('una dirección desconocida muestra la página 404', async ({ page }) => {
   await page.goto('/direccion-inexistente')
   await expect(page.getByRole('heading', { level: 1, name: /Esta página no existe/i })).toBeVisible()

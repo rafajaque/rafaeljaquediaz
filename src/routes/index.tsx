@@ -77,6 +77,21 @@ function Home() {
           </ol>
         </div>
       </section>
+      <section className="night depth-section relative overflow-hidden">
+        <div className="relative mx-auto grid max-w-7xl gap-8 px-6 py-16 md:grid-cols-[1fr_auto] md:items-end md:py-20">
+          <div>
+            <h2 className="display max-w-3xl text-4xl text-foam md:text-6xl">
+              Caso destacado: <em className="text-celeste">resiliencia agrícola en Colchagua.</em>
+            </h2>
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-foam/75">
+              Un caso de Business Intelligence con ETL reproducible, datamart, análisis de sensibilidad, clustering, forecast y un dashboard de Power BI.
+            </p>
+          </div>
+          <Link to="/proyectos" hash="caso-colchagua" className="cta-warm-link inline-flex items-center gap-2 font-medium text-naranja-light">
+            Ver caso de estudio <ArrowRight size={18} />
+          </Link>
+        </div>
+      </section>
       <section className="mx-auto max-w-7xl px-6 py-24">
         <CertificationBadge />
         <Link to="/gallery" className="cta-warm-link mt-8 inline-flex items-center gap-2">

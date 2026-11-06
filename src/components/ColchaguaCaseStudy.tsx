@@ -124,7 +124,7 @@ export function ColchaguaCaseStudy() {
                 <span className="text-xs text-ink/65">Simulaciones forecast</span>
               </div>
             </div>
-            <p className="mt-6 text-sm leading-relaxed text-ink/65">
+            <p className="mt-6 text-sm leading-relaxed text-ink/70">
               La evidencia es correlacional y exploratoria: dos estaciones meteorológicas y empleo regional no permiten atribuir causalidad ni identificar
               empresas individuales vulnerables.
             </p>

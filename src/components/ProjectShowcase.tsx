@@ -12,7 +12,7 @@ const visualConfig = {
 } as const
 
 type Project = (typeof githubProjects)[number]
-const technologyFilters = ['Todos', ...Array.from(new Set(githubProjects.map((project) => project.technologies[0])))]
+const focusFilters = ['Todos', ...Array.from(new Set(githubProjects.map((project) => project.focus)))]
 
 function ProjectVisual({ project }: { project: Project }) {
   const config = visualConfig[project.visual]
@@ -41,11 +41,11 @@ function ProjectVisual({ project }: { project: Project }) {
 
 export function ProjectShowcase() {
   const [expandedProject, setExpandedProject] = useState<string | null>(null)
-  const [activeTechnology, setActiveTechnology] = useState('Todos')
-  const filteredProjects = activeTechnology === 'Todos' ? githubProjects : githubProjects.filter((project) => project.technologies.includes(activeTechnology))
+  const [activeFocus, setActiveFocus] = useState('Todos')
+  const filteredProjects = activeFocus === 'Todos' ? githubProjects : githubProjects.filter((project) => project.focus === activeFocus)
 
-  const selectTechnology = (technology: string) => {
-    setActiveTechnology(technology)
+  const selectFocus = (focus: string) => {
+    setActiveFocus(focus)
     setExpandedProject(null)
   }
 
@@ -55,24 +55,24 @@ export function ProjectShowcase() {
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <p className="label text-azul">Explorar el portafolio</p>
-            <h2 className="mt-2 text-xl font-medium">Filtrar por tecnología principal</h2>
+            <h2 className="mt-2 text-xl font-medium">Filtrar por área</h2>
           </div>
           <p className="text-sm text-ink/65" aria-live="polite">
             {filteredProjects.length} {filteredProjects.length === 1 ? 'proyecto visible' : 'proyectos visibles'}
           </p>
         </div>
         <fieldset className="mt-5 flex flex-wrap gap-2">
-          <legend className="sr-only">Filtrar proyectos por tecnología</legend>
-          {technologyFilters.map((technology) => (
+          <legend className="sr-only">Filtrar proyectos por área</legend>
+          {focusFilters.map((focus) => (
             <button
-              key={technology}
+              key={focus}
               type="button"
-              className={`project-filter ${activeTechnology === technology ? 'is-active' : ''}`}
-              aria-pressed={activeTechnology === technology}
+              className={`project-filter ${activeFocus === focus ? 'is-active' : ''}`}
+              aria-pressed={activeFocus === focus}
               aria-controls="project-results"
-              onClick={() => selectTechnology(technology)}
+              onClick={() => selectFocus(focus)}
             >
-              {technology}
+              {focus}
             </button>
           ))}
         </fieldset>
@@ -85,7 +85,7 @@ export function ProjectShowcase() {
 
           return (
             <li
-              key={`${activeTechnology}-${project.href}`}
+              key={`${activeFocus}-${project.href}`}
               className={`project-filter-item transition-[grid-column] duration-500 ${expanded ? 'md:col-span-2' : ''}`}
             >
               <Reveal delay={(index % 2) * 90} className="h-full">

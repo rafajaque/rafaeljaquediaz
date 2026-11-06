@@ -18,6 +18,7 @@ describe('integridad del contenido público', () => {
 
   it('usa identificadores únicos y URL externas válidas', () => {
     expect(new Set(githubProjects.map((project) => project.id)).size).toBe(githubProjects.length)
+    expect(new Set(githubProjects.map((project) => project.focus)).size).toBe(githubProjects.length)
 
     const externalUrls = [
       ...socials.map((social) => social.href),

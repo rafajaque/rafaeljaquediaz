@@ -99,6 +99,7 @@ export type GitHubProject = {
   status: string
   href: string
   language: string
+  focus: 'Datos y BI' | 'Desarrollo web' | 'Hardware' | 'Marca personal' | 'Experimentación'
   technologies: string[]
   highlights: { value: string; label: string }[]
   visual: 'data' | 'device' | 'profile' | 'portfolio' | 'game'
@@ -119,6 +120,7 @@ export const githubProjects: GitHubProject[] = [
     status: 'Caso documentado con fuentes, verificaciones, notebook ejecutado, Power BI e informe técnico.',
     href: 'https://github.com/rafajaque/Investigaci-n-Colchagua-',
     language: 'Power Query',
+    focus: 'Datos y BI',
     technologies: ['Python', 'Jupyter Notebook', 'Power BI', 'DAX', 'Power Query', 'SQLite'],
     highlights: [
       { value: '33.883 ha', label: 'Superficie analizada' },
@@ -138,6 +140,7 @@ export const githubProjects: GitHubProject[] = [
     status: 'En desarrollo; el repositorio indica que todavía no se ha compilado ni probado en una placa física.',
     href: 'https://github.com/rafajaque/Zeon-Arduino',
     language: 'Arduino',
+    focus: 'Hardware',
     technologies: ['Arduino IDE', 'SSD1325', 'SH1106', 'WiFi Kit 32'],
     highlights: [
       { value: 'Arduino', label: 'Entorno principal' },
@@ -156,6 +159,7 @@ export const githubProjects: GitHubProject[] = [
     status: 'Perfil público activo y mantenido como presentación profesional dentro de GitHub.',
     href: 'https://github.com/rafajaque/rafajaque',
     language: 'Markdown',
+    focus: 'Marca personal',
     technologies: ['Markdown', 'HTML', 'SVG'],
     highlights: [
       { value: '2 temas', label: 'Claro y oscuro' },
@@ -174,6 +178,7 @@ export const githubProjects: GitHubProject[] = [
     status: 'Publicado en Netlify con despliegue automático desde la rama principal.',
     href: 'https://github.com/rafajaque/rafaeljaquediaz',
     language: 'TypeScript',
+    focus: 'Desarrollo web',
     technologies: ['React 19', 'TanStack Start', 'Tailwind CSS 4', 'Netlify'],
     highlights: [
       { value: '34', label: 'Certificaciones publicadas' },
@@ -191,6 +196,7 @@ export const githubProjects: GitHubProject[] = [
     status: 'Prototipo público; el repositorio no documenta todavía sus mecánicas o resultados.',
     href: 'https://github.com/rafajaque/Juego',
     language: 'Unity',
+    focus: 'Experimentación',
     technologies: ['Unity', 'Windows', 'Visual Studio Code'],
     highlights: [
       { value: 'Unity', label: 'Motor utilizado' },
