@@ -1,7 +1,7 @@
 import type { CSSProperties, PointerEvent as ReactPointerEvent } from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
-import { ArrowRight, Code2, Database, Pause, Play, ShieldCheck } from 'lucide-react'
+import { ArrowRight, Pause, Play } from 'lucide-react'
 import { AmbientBackdrop } from '@/components/AmbientBackdrop'
 import { Magnetic } from '@/components/Magnetic'
 
@@ -9,12 +9,6 @@ const messages = [
   { lead: 'Transformo', accent: 'datos', end: 'en decisiones.' },
   { lead: 'Desarrollo', accent: 'soluciones', end: 'que simplifican.' },
   { lead: 'Conecto', accent: 'tecnología', end: 'y gestión.' },
-]
-
-const focusAreas = [
-  { icon: Code2, title: 'Integración de sistemas', text: 'Desarrollo y análisis de requerimientos.' },
-  { icon: Database, title: 'Decisiones basadas en datos', text: 'Análisis de procesos y herramientas de BI.' },
-  { icon: ShieldCheck, title: 'Seguridad integral', text: 'Soporte TI y experiencia en CCTV.' },
 ]
 
 export function InteractiveHero() {
@@ -106,7 +100,7 @@ export function InteractiveHero() {
     >
       <AmbientBackdrop />
       <div className="hero-pointer-glow" aria-hidden="true" />
-      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-[1.3fr_1fr]">
+      <div className="relative z-10 mx-auto max-w-7xl px-6">
         <div>
           <p className="label text-azul">Rafael Andrés Jaque Díaz · Ingeniería informática</p>
           <h1 className="display mt-7 text-[clamp(3rem,6vw,5.75rem)]">
@@ -168,22 +162,6 @@ export function InteractiveHero() {
             </Magnetic>
           </div>
         </div>
-
-        <aside className="night hero-focus-card rounded-2xl border border-foam/15 p-8 text-foam md:p-10" aria-label="Enfoque profesional">
-          <p className="label text-celeste">Tecnología con propósito</p>
-          <div className="my-10 font-display text-7xl font-medium" aria-hidden="true">
-            RJ<span className="text-naranja-light">.</span>
-          </div>
-          {focusAreas.map(({ icon: Icon, title, text }) => (
-            <div key={title} className="flex gap-4 border-t border-foam/20 py-5">
-              <Icon className="mt-1 shrink-0 text-celeste" size={22} />
-              <div>
-                <h2 className="text-lg font-medium">{title}</h2>
-                <p className="mt-1 text-foam/70">{text}</p>
-              </div>
-            </div>
-          ))}
-        </aside>
       </div>
     </section>
   )
